@@ -22,7 +22,7 @@ def damage(loser):
 
     i = 0
     if loser == "monster":
-        Game.monster.health=monster.health-1
+        Game.monster.health=Game.monster.health-1
 
     elif loser == "Hero":
         Game.hero.health=Game.hero.health-1
@@ -42,8 +42,8 @@ def attack_hero():
 
 def attack_monster():
 
-    monster_attack = roll_dice(monster.attack)
-    hero_agility = roll_dice(hero.agility)
+    monster_attack = roll_dice(Game.monster.attack)
+    hero_agility = roll_dice(Game.hero.agility)
 
     if monster_attack > hero_agility:
         damage("Hero")
@@ -56,7 +56,7 @@ def attack_monster():
 
 def escape():
 
-    chance = hero.agility * 10
+    chance = Game.hero.agility * 10
     flee = random.randint(1, 100)
     if flee < chance:
         print("Hero fled the scene")
