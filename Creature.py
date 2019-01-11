@@ -5,6 +5,7 @@ class Mage():
     endurance = int(4)
     agility = int(5)
     initiative = int(6)
+
     def ability(self):
         chance = (random.randint(1, 100))
         if chance < 80:
@@ -17,6 +18,7 @@ class Theif():
     endurance = int(5)
     agility = int(7)
     initiative = int(7)
+
     def ability(self):
         chance = (random.randint(1, 100))
         if chance < 25:
@@ -30,10 +32,15 @@ class Knight():
     agility = int(4)
     initiative = int(5)
 
+class Monster:
+    def __init__(self, name, initiative, endurance, attack, agility, rarity):
+        self.name = name
+        self.initiative = initiative
+        self.endurance = endurance
+        self.attack = attack
+        self.agility = agility
+        self.rarity = rarity
 
-
-
-
-
-
-
+giant_spider = Monster("Giant Spider", 7, 1, 2, 3, 20)
+skeleton = Monster("Skeleton", 4, 2, 3, 3, 15)
+orc = Monster("Orc", 6, 3, 4, 4, 10)
