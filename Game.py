@@ -1,16 +1,19 @@
-def playerselection(choice):
-    if choice == 1:
-        Player = Knight
-    elif choice == 2:
-        Player = Mage
-    elif choice == 3:
-        pPlayer = Thief
-    else:
-        print("Invalid Choice")
+import Creature
 
-bajs = int(input("what do u wanan be "))
+choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
 
-playerselection(bajs)
+if choice == 1:
+    Hero = Creature.Knight
+elif choice == 2:
+    Hero = Creature.Mage
+elif choice == 3:
+    Hero = Creature.Thief
+else:
+    print("Invalid Choice")
+
+print(Hero.attack)
+
+
 
 
 
