@@ -23,10 +23,10 @@ class Treasure:
 
 
 loose_coins = Treasure("loose_coins", 2, 40)
-money_pouch = Treasure("money_pouch", 2, 40)
-gold_jewelery = Treasure("gold_jewelery", 2, 40)
-gemstone = Treasure("gemstone", 2, 40)
-small_treasure_chest = Treasure("small_treasure_chest", 2, 40)
+money_pouch = Treasure("money_pouch", 6, 20)
+gold_jewelery = Treasure("gold_jewelery", 10, 15)
+gemstone = Treasure("gemstone", 14, 10)
+small_treasure_chest = Treasure("small_treasure_chest", 20, 5)
 
 
 
