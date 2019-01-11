@@ -1,7 +1,6 @@
 mapcord = []
 currentcord = 0
 
-ne =
 
 
 # Mapsize creator
