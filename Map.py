@@ -1,14 +1,26 @@
 mapcord = []
 currentcord = 0
 
-
+sizex = 0
+sizey = 0
 
 # Mapsize creator
-def mapsize(x, y):
-    for r in range(x):
-        for k in range(y):
+def mapsize(y, x):
+    for r in range(y):
+        for k in range(x):
             mapcord.append([r, k])
+    global sizex
+    global sizey
+    sizex = x
+    sizey = y
     print(mapcord)
+
+
+# Set corner coodinates
+ne = 0, sizey-1
+sw = sizex-1, 0
+se = sizey-1, sizex-1
+
 
 diffpick = input('Choose difficulty!\n[1] Easy\n[2] Medium\n[3] Hard\n')
 if diffpick == '1':
@@ -19,14 +31,21 @@ elif diffpick == '3':
     mapsize(8, 8)
 
 
-
-
 # Start room selection
 startroom = input('Were would you like to start?\n[1] Northwest\n[2] Northeast\n[3] Southwest\n[4] Southeast')
 if startroom == '1':
     currentcord = 0, 0
 elif startroom == '2':
-    currentcord = 0, ne
+    currentcord = ne
+elif currentcord == '3':
+    startroom = sw
+elif currentcord == '4':
+    startroom = se
 
+
+# Choose direction
 direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S]To go south\n[D] to go east").lower()
 if direction == 'w':
+    currentcord -
+
+
