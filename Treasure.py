@@ -5,14 +5,14 @@ import random
 # If there is monster in the room the treasure would picked up unless the player get defeated by monsters or escaped from the room.
 # Treasures are randomized in each room based on its usuality as shown in below chart.
 
-#   #   #   #   #   #   #   #
-# Treasure          	Value(Point)	Rarity
-# Loose coins	          2	             40%
-# Money pouch	          6	             20%
-# Gold jewelry      	 10              15%
-# Gemstone	             14              10%
-# Small treasure chest	 20	              5%
-
+#   #   #   #   #   #   #   #   #   #   #   #   #
+# Treasure          	Value(Point)	Rarity  #
+# Loose coins	          2	             40%    #
+# Money pouch	          6	             20%    #
+# Gold jewelry      	 10              15%    #
+# Gemstone	             14              10%    #
+# Small treasure chest	 20	              5%    #
+#   #   #   #   #   #   #   #   #   #   #   #   #
 class Treasure:
 
     def __init__(self, treasure_name, treasure_value, treasure_rarity):
@@ -21,46 +21,59 @@ class Treasure:
         self.treasure_rarity = treasure_rarity
 
 
-
-
 loose_coins = Treasure("loose_coins", 2, 40)
 money_pouch = Treasure("money_pouch", 6, 20)
-gold_jewelery = Treasure("gold_jewelery", 10, 15)
+gold_jewelry = Treasure("gold_jewelry", 10, 15)
 gemstone = Treasure("gemstone", 14, 10)
 small_treasure_chest = Treasure("small_treasure_chest", 20, 5)
 
-def loose_coins_rarity():
-     roll = random.randint(1,100)
-if (loose_coins_rarity.roll >= 1 and loose_coins_rarity.roll<= 40):
-    put in map
-else:
-    dont put in map
+def random_generator():
+    roll = (random.randint(1, 100))
+    return roll
 
+def loose_coins_rarity(roll):
+    if (1 <= roll <= 40):
+        print(roll)
+        print("Loose coin treasure does exist")
+    else:
+        print(roll)
+        print("Loose coin treasure does not exist")
 
-def money_pouch_rarity():
-     roll = random.randint(1,100)
-if (money_pouch_rarity.roll >= 1 and money_pouch_rarity.roll<= 20):
-    put in map
-else:
-    dont put in map
+def money_pouch_rarity(roll):
+    if (1 <= roll <= 20):
+        print(roll)
+        print("Money pouch treasure does exist")
+    else:
+        print(roll)
+        print("Money pouch treasure does not exist")
 
-    def gold_jewelery_rarity():
-     roll = random.randint(1,100)
-if (gold_jewelery_rarity.roll >= 1 and gold_jewelery_rarity.roll<= 15):
-    put in map
-else:
-    dont put in map
+def gold_jewelry_rarity(roll):
+    if (1 <= roll <= 15):
+        print(roll)
+        print("Gold jewelry treasure does exist")
+    else:
+        print(roll)
+        print("Gold jewelry treasure does not exist")
 
-    def gemstone_rarity():
-     roll = random.randint(1,100)
-if (gemstone_rarity.roll >= 1 and gemstone_rarity.roll<= 10):
-    put in map
-else:
-    dont put in map
+def gemstone_rarity(roll):
+    if(1 <= roll <= 10):
+        print (roll)
+        print ("Gemstone treasure does exist")
+    else:
+        print (roll)
+        print ("Gemstone treasure does not exist")
 
-    def small_treasure_chest_rarity():
-     roll = random.randint(1,100)
-if (small_treasure_chest_rarity.roll >= 1 and small_treasure_chest_rarity.roll<= 5):
-    put in map
-else:
-    dont put in map
+def small_treasure_chest_rarity(roll):
+    if (1 <= roll <= 5):
+        print (roll)
+        print ("Small treasure chest does exist")
+    else:
+        print (roll)
+        print ("Small treasure chest does not exist")
+
+loose_coins_rarity(random_generator())
+money_pouch_rarity(random_generator())
+gold_jewelry_rarity(random_generator())
+gemstone_rarity(random_generator())
+small_treasure_chest_rarity(random_generator())
+
