@@ -1,45 +1,52 @@
 import random
-import Game
+import Creature
 
 def roll_dice(roll):
-        result = int(0)
-        i = 0
-        while i < roll:
-            dice = random.randint(1, 6)
-            i = i+1
-            result = result+dice
-        return result
+    result = int(0)
+    i = 0
+    while i < roll:
+        dice = random.randint(1, 6)
+        i = i+1
+        result = result+dice
+    return result
 
-def damage(loser):
-    if loser == "monster":
-        Game.monster.health = Game.monster.health-1
-    elif loser == "Hero":
-        Game.hero.health = Game.hero.health-1
+def damage(health):
+    health = health - 1
+    return health
 
-def attack_hero():
-    hero_attack = roll_dice(Game.hero.attack)
-    monster_agility = roll_dice(Game.monster.agility)
+def attack_hero(thief, hero_attack, monster_agility, monster_health):
+    hero_attack = roll_dice(hero_attack)
+    monster_agility = roll_dice(monster_agility)
+    if thief == 3 and Creature.Theif.ability(False) == True:
+        hero_attack = hero_attack * 2
+
     if hero_attack > monster_agility:
-        damage("monster")
+        new_health = damage(monster_health)
+        return new_health
     elif monster_agility > hero_attack:
         print("haha stupid human")
 
-def attack_monster():
-    monster_attack = roll_dice(Game.monster.attack)
-    hero_agility = roll_dice(Game.hero.agility)
+def attack_monster(monster_attack, hero_agility, hero_health):
+    monster_attack = roll_dice(monster_attack)
+    hero_agility = roll_dice(hero_agility)
     if monster_attack > hero_agility:
-        damage("Hero")
+        new_health = damage(hero_health)
+        return new_health
     elif hero_agility > monster_attack:
         print("haha u missed")
 
-def escape():
-    chance = Game.hero.agility * 10
-    flee = random.randint(1, 100)
-    if flee < chance:
-        print("Hero fled the scene")
+def escape(Mage, agility):
+    if Mage == 2 and Creature.Mage.ability(False) == True:
+        print("You are mage")
+    elif Mage == 2 and Creature.Mage.ability(False) == False:
+        print("Stay in room mage")
     else:
-        print("Stay in the room sir ")
-
+        chance = agility * 10
+        flee = random.randint(1, 100)
+        if flee < chance:
+            print("Hero fled the scene")
+        else:
+            print("Stay in the room sir ")
 
 
 
