@@ -11,3 +11,4 @@ class Room:
 
     def gety(self):
         return self.y
+
