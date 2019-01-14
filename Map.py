@@ -64,7 +64,7 @@ elif direction == 's':
         if newroom.gety() == (cury + 1) and newroom.getx() == curx:
             cury = (newroom.gety())
             break
-elif direction == 's':
+elif direction == 'a':
     for newroom in mapcord:
         if newroom.getx() == (curx - 1) and newroom.gety() == cury:
             curx = (newroom.getx())
