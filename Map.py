@@ -1,5 +1,7 @@
+import roomClass
 mapcord = []
-currentcord = 0
+currentcord = []
+prevroom = []
 
 sizex = 0
 sizey = 0
@@ -9,7 +11,8 @@ sizey = 0
 def mapsize(y, x):
     for r in range(y):
         for k in range(x):
-            mapcord.append([r, k])
+            room = roomClass.Room(r,k)
+            mapcord.append(room)
     global sizex
     global sizey
     sizex = x
@@ -47,7 +50,11 @@ elif startroom == '4':
 # Choose direction
 direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S]To go south\n[D] to go east").lower()
 if direction == 'w':
-    currentcord = (for i in mapcord:
-                   
-                    
+    y = currentcord[0]
+    x = currentcord[1]
+    room2 = roomClass.Room
+    room2.sety(y)
+    room2.setx(x)
+    for room2 in mapcord:
+        if room2.getx
 
