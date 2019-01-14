@@ -75,4 +75,3 @@ elif direction == 'd':
             curx = (newroom.getx())
             break
 
-print(cury, curx)
