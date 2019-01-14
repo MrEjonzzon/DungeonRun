@@ -74,7 +74,4 @@ def troll_rarity():
     else:
         return False
 
-print(giant_spider_rarity())
-print(skeleton_rarity())
-print(orc_rarity())
-print(troll_rarity())
+
