@@ -11,7 +11,8 @@ elif choice == 3:
 else:
     print("Invalid Choice")
 
-Battle.escape(choice)
+Battle.escape(choice, Hero.agility)
+
 
 
 

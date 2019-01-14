@@ -8,7 +8,7 @@ class Mage():
 
     def ability(self):
         chance = (random.randint(1, 100))
-        if chance < 80:
+        if chance <= 80:
             return True
         else:
             return False
@@ -21,7 +21,7 @@ class Theif():
 
     def ability(self):
         chance = (random.randint(1, 100))
-        if chance < 25:
+        if chance <= 25:
             return True
         else:
             return False
