@@ -12,9 +12,9 @@ def roll_dice(roll):
 
 def damage(loser):
     if loser == "monster":
-        Game.monster.health = Game.monster.health-1
+        Game.monster.health = Game.monster.endurance-1
     elif loser == "Hero":
-        Game.hero.health = Game.hero.health-1
+        Game.hero.health = Game.hero.endurance-1
 
 def attack_hero():
     hero_attack = roll_dice(Game.hero.attack)

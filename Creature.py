@@ -44,3 +44,37 @@ class Monster:
 giant_spider = Monster("Giant Spider", 7, 1, 2, 3, 20)
 skeleton = Monster("Skeleton", 4, 2, 3, 3, 15)
 orc = Monster("Orc", 6, 3, 4, 4, 10)
+troll = Monster("Troll", 2, 4, 7, 2, 5)
+
+def random_generator():
+    roll = (random.randint(1, 100))
+    return roll
+
+def giant_spider_rarity():
+    if random_generator() <= giant_spider.rarity:
+        return True
+    else:
+        return False
+
+def skeleton_rarity():
+    if random_generator() <= skeleton.rarity:
+        return True
+    else:
+        return False
+
+def orc_rarity():
+    if random_generator() <= orc.rarity:
+        return True
+    else:
+        return False
+
+def troll_rarity():
+    if random_generator() <= troll.rarity:
+        return True
+    else:
+        return False
+
+print(giant_spider_rarity())
+print(skeleton_rarity())
+print(orc_rarity())
+print(troll_rarity())
