@@ -33,7 +33,7 @@ def attack_monster(monster_attack, hero_agility, hero_health):
         new_health = damage(hero_health)
         return new_health
     elif hero_agility > monster_attack:
-        print("haha u missed")
+        print("haha u missed u fkn noob kil urself")
 
 def escape(Mage, agility):
     if Mage == 2 and Creature.Mage.ability(False) == True:
