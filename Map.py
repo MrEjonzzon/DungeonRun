@@ -11,19 +11,13 @@ sizey = 0
 def mapsize(y, x):
     for r in range(y):
         for k in range(x):
-            room = roomClass.Room(r,k)
+            room = roomClass.Room(r, k)
             mapcord.append(room)
     global sizex
     global sizey
     sizex = x
     sizey = y
     print(mapcord)
-
-
-# Set corner coodinates
-ne = 0, sizey-1
-sw = sizex-1, 0
-se = sizex-1, sizey-1
 
 
 diffpick = input('Choose difficulty!\n[1] Easy\n[2] Medium\n[3] Hard\n')
@@ -33,6 +27,13 @@ elif diffpick == '2':
     mapsize(5, 5)
 elif diffpick == '3':
     mapsize(8, 8)
+print(mapcord)
+
+
+# Set corner coodinates
+ne = 0, sizey-1
+sw = sizex-1, 0
+se = sizex-1, sizey-1
 
 
 # Start room selection
@@ -52,9 +53,6 @@ direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S]To go s
 if direction == 'w':
     y = currentcord[0]
     x = currentcord[1]
-    room2 = roomClass.Room
-    room2.sety(y)
-    room2.setx(x)
-    for room2 in mapcord:
-        if room2.getx
-
+    for room in mapcord:
+        if (room.getx(-1) == currentcord[1]) and (y == currentcord[0]):
+            currentcord = room.getx()
