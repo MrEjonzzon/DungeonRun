@@ -41,16 +41,16 @@ if startroom == '1':
     curx = 0
     cury = 0
 elif startroom == '2':
-    curx = 0
-    cury = sizey - 1
-elif startroom == '3':
-    curx = sizex-1
+    curx = sizex - 1
     cury = 0
+elif startroom == '3':
+    curx = 0
+    cury = sizey-1
 elif startroom == '4':
     curx = sizex - 1
     cury = sizey - 1
 
-print(curx, cury)
+print(cury, curx)
 
 # Choose direction
 direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east").lower()
@@ -75,4 +75,4 @@ elif direction == 'd':
             curx = (newroom.getx())
             break
 
-print(curx, cury)
+print(cury, curx)
