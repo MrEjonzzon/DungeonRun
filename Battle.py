@@ -24,6 +24,7 @@ def attack_hero(thief, hero_attack, monster_agility, monster_health):
         return new_health
     elif monster_agility > hero_attack:
         print("haha stupid human")
+        return monster_health
 
 def attack_monster(monster_attack, hero_agility, hero_health):
     monster_attack = roll_dice(monster_attack)
@@ -33,6 +34,7 @@ def attack_monster(monster_attack, hero_agility, hero_health):
         return new_health
     elif hero_agility > monster_attack:
         print("haha u missed")
+        return hero_health
 
 def escape(Mage, agility):
     if Mage == 2 and Creature.Mage.ability(False) == True:
