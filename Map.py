@@ -1,16 +1,12 @@
 import roomClass
 import random
-#import Creature
-
+import Creature
+import Treasure
+import Battle
 mapcord = []
-
 curx = 0
 cury = 0
-
 prevroom = []
-
-prevy = 0
-prevx = 0
 
 sizex = 0
 sizey = 0
@@ -36,23 +32,14 @@ elif diffpick == '2':
 elif diffpick == '3':
     mapsize(8, 8)
 
-number = len(mapcord)
-
-'''
-for i in number:
-    Creature.troll_rarity()
-    Creature.giant_spider()
-    Creature.orc_rarity()
-    Creature.skeleton_rarity()
-
 # Set corner coodinates
 ne = 0, sizey-1
 sw = sizex-1, 0
 se = sizex-1, sizey-1
-'''
+
 
 # Start room selection
-startroom = input('\nWere would you like to start?\n\n[1] Northwest\n[2] Northeast\n[3] Southwest\n[4] Southeast\n')
+startroom = input('Were would you like to start?\n[1] Northwest\n[2] Northeast\n[3] Southwest\n[4] Southeast')
 if startroom == '1':
     curx = 0
     cury = 0
@@ -66,63 +53,29 @@ elif startroom == '4':
     curx = sizex - 1
     cury = sizey - 1
 
-print("\nCurrent room : ", cury, ".", curx)
+print(cury, curx)
 
 # Choose direction
-direction = input("\nChoose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east").lower()
+direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east").lower()
 if direction == 'w':
-
-
-    prevy = cury
-    prevx = curx
-
-    print("\nPrevious room :", prevy, ".", prevx, "\n")
-
     for newroom in mapcord:
         if newroom.gety() == (cury - 1) and newroom.getx() == curx:
             cury = (newroom.gety())
-
             break
 elif direction == 's':
-
-    prevy = cury
-    prevx = curx
-
-    print("\nPrevious room :", prevy, ".", prevx, "\n")
-
-
-
     for newroom in mapcord:
         if newroom.gety() == (cury + 1) and newroom.getx() == curx:
             cury = (newroom.gety())
-
             break
 elif direction == 'a':
-
-
-
-    prevy = cury
-    prevx = curx
-
-    print("\nPrevious room :", prevy, ".", prevx, "\n")
-
     for newroom in mapcord:
         if newroom.getx() == (curx - 1) and newroom.gety() == cury:
             curx = (newroom.getx())
-
-
             break
 elif direction == 'd':
-
-    prevy = cury
-    prevx = curx
-
-    print("\nPrevious room :", prevy, ".", prevx, "\n")
-
     for newroom in mapcord:
         if newroom.getx() == (curx + 1) and newroom.gety() == cury:
             curx = (newroom.getx())
             break
-
-print("Current room : ", cury, ".", curx)
+print(cury, curx)
 

@@ -31,49 +31,33 @@ def random_generator():
     roll = (random.randint(1, 100))
     return roll
 
-def loose_coins_rarity(roll):
-    if (1 <= roll <= 40):
-        print(roll)
-        print("Loose coin treasure does exist")
+def loose_coins_rarity():
+    if random_generator() <= 40:
+        return True
     else:
-        print(roll)
-        print("Loose coin treasure does not exist")
+        return False
 
-def money_pouch_rarity(roll):
-    if (1 <= roll <= 20):
-        print(roll)
-        print("Money pouch treasure does exist")
+def money_pouch_rarity():
+    if random_generator() <= 20:
+        return True
     else:
-        print(roll)
-        print("Money pouch treasure does not exist")
+        return False
 
-def gold_jewelry_rarity(roll):
-    if (1 <= roll <= 15):
-        print(roll)
-        print("Gold jewelry treasure does exist")
+def gold_jewelry_rarity():
+    if random_generator() <= 15:
+        return True
     else:
-        print(roll)
-        print("Gold jewelry treasure does not exist")
+        return False
 
-def gemstone_rarity(roll):
-    if(1 <= roll <= 10):
-        print (roll)
-        print ("Gemstone treasure does exist")
+def gemstone_rarity():
+    if random_generator() <= 10:
+        return True
     else:
-        print (roll)
-        print ("Gemstone treasure does not exist")
+        return False
 
-def small_treasure_chest_rarity(roll):
-    if (1 <= roll <= 5):
-        print (roll)
-        print ("Small treasure chest does exist")
+def small_treasure_chest_rarity():
+    if random_generator() <= 5:
+        return True
     else:
-        print (roll)
-        print ("Small treasure chest does not exist")
-
-loose_coins_rarity(random_generator())
-money_pouch_rarity(random_generator())
-gold_jewelry_rarity(random_generator())
-gemstone_rarity(random_generator())
-small_treasure_chest_rarity(random_generator())
+        return False
 
