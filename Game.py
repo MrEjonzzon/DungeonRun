@@ -12,7 +12,7 @@ else:
     print("Invalid Choice")
 
 def fight(monster):
-    order = Battle.fight_order(Hero.agility, monster.agility)
+    order = Battle.fight_order(Hero.initiative, monster.initiative)
     current_health_hero = Hero.endurance
     current_health_monster = monster.endurance
     while True:
