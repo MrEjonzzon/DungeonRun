@@ -32,10 +32,10 @@ def fight(monster):
                 order = "hero"
             else:
                 print("Invalid Choice")
-        elif current_health_monster == 0:
+        elif current_health_monster <= 0:
             print("monster died")
             break
-        elif current_health_hero == 0:
+        elif current_health_hero <= 0:
             print("you died")
             break
 
