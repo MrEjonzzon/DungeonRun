@@ -1,6 +1,8 @@
 import roomClass
 import random
 import Creature
+import Treasure
+import Battle
 mapcord = []
 curx = 0
 cury = 0
@@ -30,13 +32,8 @@ elif diffpick == '2':
 elif diffpick == '3':
     mapsize(8, 8)
 
-number = len(mapcord)
-
-for i in number:
-    Creature.troll_rarity()
-    Creature.giant_spider()
-    Creature.orc_rarity()
-    Creature.skeleton_rarity()
+print(mapcord.treasure_list)
+print(mapcord.monster_list)
 
 # Set corner coodinates
 ne = 0, sizey-1

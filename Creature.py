@@ -33,13 +33,12 @@ class Knight():
     initiative = int(5)
 
 class Monster:
-    def __init__(self, name, initiative, endurance, attack, agility, rarity):
+    def __init__(self, name, initiative, endurance, attack, agility):
         self.name = name
         self.initiative = initiative
         self.endurance = endurance
         self.attack = attack
         self.agility = agility
-        self.rarity = rarity
 
 giant_spider = Monster("Giant Spider", 7, 1, 2, 3)
 skeleton = Monster("Skeleton", 4, 2, 3, 3)
