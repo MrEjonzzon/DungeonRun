@@ -25,7 +25,7 @@ def fight(monster):
                     current_health_monster = Battle.attack_hero(choice, Hero.attack, monster.agility,current_health_monster)
                     order = "monster"
                 elif battle_choice == 2:
-                    if Battle.escape(choice, Hero.agility) == True:
+                    if Battle.escape(choice, Hero.agility):
                         break
             elif order == "monster":
                 current_health_hero = Battle.attack_monster(monster.attack, Hero.agility, current_health_hero, choice)
