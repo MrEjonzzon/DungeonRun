@@ -11,8 +11,12 @@ elif choice == 3:
 else:
     print("Invalid Choice")
 
-Battle.escape(choice, Hero.agility)
 
+current_health = Hero.endurance
+
+current_health = Battle.attack_monster(4, Hero.agility, Hero.endurance)
+
+print(current_health)
 
 
 
