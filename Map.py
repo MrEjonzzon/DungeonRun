@@ -1,4 +1,6 @@
 import roomClass
+import random
+import Creature
 mapcord = []
 curx = 0
 cury = 0
@@ -28,6 +30,13 @@ elif diffpick == '2':
 elif diffpick == '3':
     mapsize(8, 8)
 
+number = len(mapcord)
+
+for i in number:
+    Creature.troll_rarity()
+    Creature.giant_spider()
+    Creature.orc_rarity()
+    Creature.skeleton_rarity()
 
 # Set corner coodinates
 ne = 0, sizey-1
@@ -74,4 +83,5 @@ elif direction == 'd':
         if newroom.getx() == (curx + 1) and newroom.gety() == cury:
             curx = (newroom.getx())
             break
+print(cury, curx)
 
