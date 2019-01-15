@@ -32,9 +32,6 @@ elif diffpick == '2':
 elif diffpick == '3':
     mapsize(8, 8)
 
-print(mapcord.treasure_list)
-print(mapcord.monster_list)
-
 # Set corner coodinates
 ne = 0, sizey-1
 sw = sizex-1, 0
