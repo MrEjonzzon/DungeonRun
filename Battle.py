@@ -10,6 +10,16 @@ def roll_dice(roll):
         result = result+dice
     return result
 
+def fight_order(hero_agility, monster_agility):
+    if roll_dice(hero_agility) > roll_dice(monster_agility):
+        start = "hero"
+        print("hero starts")
+        return start
+    else:
+        print("monster starts")
+        start = "monster"
+        return start
+
 def damage(health):
     health = health - 1
     return health
@@ -21,19 +31,35 @@ def attack_hero(thief, hero_attack, monster_agility, monster_health):
         new_health = damage(monster_health)
         if thief == 3 and Creature.Theif.ability(False) == True:
             new_health = damage(new_health)
-        return new_health
+            print("thif hit")
+            return new_health
+        else:
+            print("hero hit")
+            return new_health
     elif monster_agility > hero_attack:
-        print("haha stupid human")
+        print("hero missed")
         return monster_health
 
-def attack_monster(monster_attack, hero_agility, hero_health):
+def attack_monster(monster_attack, hero_agility, hero_health, knight):
     monster_attack = roll_dice(monster_attack)
+    knight_count = 0
     hero_agility = roll_dice(hero_agility)
     if monster_attack > hero_agility:
-        new_health = damage(hero_health)
-        return new_health
+        if knight == 1:
+            if knight_count == 0:
+                print("Knight blocked the attack")
+                knight_count = knight_count + 1
+                return hero_health
+            else:
+                new_health = damage(hero_health)
+                print("monster hit")
+                return new_health
+        else:
+            new_health = damage(hero_health)
+            print("monster hit")
+            return new_health
     elif hero_agility > monster_attack:
-        print("haha u missed")
+        print("monster missed")
         return hero_health
 
 def escape(Mage, agility):
@@ -46,8 +72,10 @@ def escape(Mage, agility):
         flee = random.randint(1, 100)
         if flee < chance:
             print("Hero fled the scene")
+            return True
         else:
             print("Stay in the room sir ")
+            return False
 
 
 

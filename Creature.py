@@ -40,6 +40,7 @@ class Monster:
         self.attack = attack
         self.agility = agility
 
+
 giant_spider = Monster("Giant Spider", 7, 1, 2, 3)
 skeleton = Monster("Skeleton", 4, 2, 3, 3)
 orc = Monster("Orc", 6, 3, 4, 4)
