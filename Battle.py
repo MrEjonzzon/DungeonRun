@@ -64,9 +64,11 @@ def attack_monster(monster_attack, hero_agility, hero_health, knight):
 
 def escape(Mage, agility):
     if Mage == 2 and Creature.Mage.ability(False) == True:
-        print("You are mage")
+        print("Mage fled the scene")
+        return True
     elif Mage == 2 and Creature.Mage.ability(False) == False:
         print("Stay in room mage")
+        return False
     else:
         chance = agility * 10
         flee = random.randint(1, 100)
