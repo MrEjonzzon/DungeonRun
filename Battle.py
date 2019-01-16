@@ -1,6 +1,7 @@
 import random
 import Creature
 
+
 def roll_dice(roll):
     result = int(0)
     i = 0
@@ -9,6 +10,7 @@ def roll_dice(roll):
         i = i+1
         result = result+dice
     return result
+
 
 def fight_order(hero_initiative, monster_initiative):
     if roll_dice(hero_initiative) > roll_dice(monster_initiative):
@@ -20,9 +22,11 @@ def fight_order(hero_initiative, monster_initiative):
         start = "monster"
         return start
 
+
 def damage(health):
     new_health = health - 1
     return new_health
+
 
 def attack_hero(thief, hero_attack, monster_agility, monster_health):
     hero_attack = roll_dice(hero_attack)
@@ -39,6 +43,7 @@ def attack_hero(thief, hero_attack, monster_agility, monster_health):
     elif monster_agility > hero_attack:
         print("hero missed")
         return monster_health
+
 
 def attack_monster(monster_attack, hero_agility, hero_health, knight, knight_count):
     monster_attack = roll_dice(monster_attack)
@@ -60,6 +65,7 @@ def attack_monster(monster_attack, hero_agility, hero_health, knight, knight_cou
     elif hero_agility > monster_attack:
         print("monster missed")
         return hero_health
+
 
 def escape(Mage, agility):
     if Mage == 2 and Creature.Mage.ability(False) == True:

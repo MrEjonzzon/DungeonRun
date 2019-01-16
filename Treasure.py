@@ -13,8 +13,9 @@ import random
 # Gemstone	             14              10%    #
 # Small treasure chest	 20	              5%    #
 #   #   #   #   #   #   #   #   #   #   #   #   #
-class Treasure:
 
+
+class Treasure:
     def __init__(self, treasure_name, treasure_value, treasure_rarity):
         self.treasure_name = treasure_name
         self.treasure_value = treasure_value
@@ -27,9 +28,11 @@ gold_jewelry = Treasure("gold_jewelry", 10, 15)
 gemstone = Treasure("gemstone", 14, 10)
 small_treasure_chest = Treasure("small_treasure_chest", 20, 5)
 
+
 def random_generator():
     roll = (random.randint(1, 100))
     return roll
+
 
 def loose_coins_rarity():
     if random_generator() <= 40:
@@ -37,11 +40,13 @@ def loose_coins_rarity():
     else:
         return False
 
+
 def money_pouch_rarity():
     if random_generator() <= 20:
         return True
     else:
         return False
+
 
 def gold_jewelry_rarity():
     if random_generator() <= 15:
@@ -49,11 +54,13 @@ def gold_jewelry_rarity():
     else:
         return False
 
+
 def gemstone_rarity():
     if random_generator() <= 10:
         return True
     else:
         return False
+
 
 def small_treasure_chest_rarity():
     if random_generator() <= 5:

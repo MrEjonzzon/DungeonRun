@@ -9,6 +9,7 @@ sizey = 0
 prevy = 0
 prevx = 0
 
+
 # Mapsize creator
 def mapsize(x, y):
     for r in range(x):
@@ -31,8 +32,9 @@ elif diffpick == '3':
     mapsize(8, 8)
 
 print(demomap)
-for monster in mapcord:
-    print(roomClass.Room.monster_list)
+for room in mapcord:
+    print(room.monster_list)
+
 # Set corner coodinates
 ne = 0, sizey-1
 sw = sizex-1, 0
