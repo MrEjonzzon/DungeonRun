@@ -4,10 +4,16 @@ import Battle
 choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
 if choice == 1:
     Hero = Creature.Knight
+    print("You are a knight\nAttack: " + str(Hero.attack) + "\nEndurance: " + str(Hero.endurance) + "\nAgility: " + str(
+        Hero.agility) + "\nInitiative: " + str(Hero.initiative) + "\n\n")
 elif choice == 2:
     Hero = Creature.Mage
+    print("You are a mage\nAttack: " + str(Hero.attack) + "\nEndurance: " + str(Hero.endurance) + "\nAgility: " + str(
+        Hero.agility) + "\nInitiative: " + str(Hero.initiative) + "\n\n")
 elif choice == 3:
     Hero = Creature.Theif
+    print("You are a theif\nAttack: " + str(Hero.attack) + "\nEndurance: " + str(Hero.endurance) + "\nAgility: " + str(
+        Hero.agility) + "\nInitiative: " + str(Hero.initiative) + "\n\n")
 else:
     print("Invalid Choice")
 
