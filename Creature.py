@@ -1,6 +1,5 @@
 import random
 
-
 class Mage():
     attack = int(9)
     endurance = int(4)
@@ -13,7 +12,6 @@ class Mage():
             return True
         else:
             return False
-
 
 class Theif():
     attack = int(5)
@@ -28,13 +26,11 @@ class Theif():
         else:
             return False
 
-
 class Knight():
     attack = int(6)
     endurance = int(9)
     agility = int(4)
     initiative = int(5)
-
 
 class Monster:
     def __init__(self, name, initiative, endurance, attack, agility):
@@ -50,11 +46,9 @@ skeleton = Monster("Skeleton", 4, 2, 3, 3)
 orc = Monster("Orc", 6, 3, 4, 4)
 troll = Monster("Troll", 2, 4, 7, 2)
 
-
 def random_generator():
     roll = (random.randint(1, 100))
     return roll
-
 
 def giant_spider_rarity():
     if random_generator() <= 20:
@@ -62,25 +56,20 @@ def giant_spider_rarity():
     else:
         return False
 
-
 def skeleton_rarity():
-    if random_generator() <= skeleton.rarity:
+    if random_generator() <= 15:
         return True
     else:
         return False
-
 
 def orc_rarity():
-    if random_generator() <= orc.rarity:
+    if random_generator() <= 10:
         return True
     else:
         return False
-
 
 def troll_rarity():
-    if random_generator() <= troll.rarity:
+    if random_generator() <= 5:
         return True
     else:
         return False
-
-

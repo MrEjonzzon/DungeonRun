@@ -1,10 +1,12 @@
 import roomClass
+import random
 import Creature
+import Treasure
+import Battle
 mapcord = []
 curx = 0
 cury = 0
 prevroom = []
-contents = []
 
 sizex = 0
 sizey = 0
@@ -30,12 +32,10 @@ elif diffpick == '2':
 elif diffpick == '3':
     mapsize(8, 8)
 
-print(map)
-
 # Set corner coodinates
-ne = 0, sizex-1
-sw = sizey-1, 0
-se = sizey-1, sizex-1
+ne = 0, sizey-1
+sw = sizex-1, 0
+se = sizex-1, sizey-1
 
 
 # Start room selection
@@ -77,9 +77,5 @@ elif direction == 'd':
         if newroom.getx() == (curx + 1) and newroom.gety() == cury:
             curx = (newroom.getx())
             break
-
 print(cury, curx)
 
-for room in mapcord:
-    for monster in room.monster:
-        print(monster)
