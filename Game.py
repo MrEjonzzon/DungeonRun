@@ -12,7 +12,7 @@ else:
     print("Invalid Choice")
 
 def fight(monster):
-    order = Battle.fight_order(Hero.agility, monster.agility)
+    order = Battle.fight_order(Hero.initiative, monster.initiative)
     current_health_hero = Hero.endurance
     current_health_monster = monster.endurance
     while True:
@@ -25,17 +25,17 @@ def fight(monster):
                     current_health_monster = Battle.attack_hero(choice, Hero.attack, monster.agility,current_health_monster)
                     order = "monster"
                 elif battle_choice == 2:
-                    if Battle.escape(choice, Hero.agility) == True:
+                    if Battle.escape(choice, Hero.agility):
                         break
             elif order == "monster":
                 current_health_hero = Battle.attack_monster(monster.attack, Hero.agility, current_health_hero, choice)
                 order = "hero"
             else:
                 print("Invalid Choice")
-        elif current_health_monster == 0:
+        elif current_health_monster <= 0:
             print("monster died")
             break
-        elif current_health_hero == 0:
+        elif current_health_hero <= 0:
             print("you died")
             break
 

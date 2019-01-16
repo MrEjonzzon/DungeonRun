@@ -31,7 +31,7 @@ def attack_hero(thief, hero_attack, monster_agility, monster_health):
         new_health = damage(monster_health)
         if thief == 3 and Creature.Theif.ability(False) == True:
             new_health = damage(new_health)
-            print("thif hit")
+            print("thif hit double")
             return new_health
         else:
             print("hero hit")
