@@ -31,9 +31,17 @@ elif diffpick == '2':
 elif diffpick == '3':
     mapsize(8, 8)
 
-print(demomap)
-for room in mapcord:
-    print(room.monster_list)
+
+def mapcont_demo():
+    print(demomap)
+    for room in mapcord:
+        print(room.monster_list)
+
+    print("\n")
+
+    for room in mapcord:
+        print(room.treasure_list)
+
 
 # Set corner coodinates
 ne = 0, sizey-1
@@ -41,6 +49,7 @@ sw = sizex-1, 0
 se = sizex-1, sizey-1
 
 
+mapcont_demo()
 # Start room selection
 startroom = input('Were would you like to start?\n[1] Northwest\n[2] Northeast\n[3] Southwest\n[4] Southeast\n')
 if startroom == '1':
