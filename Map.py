@@ -3,7 +3,7 @@ mapcord = []
 curx = 0
 cury = 0
 prevroom = []
-
+demomap = []
 sizex = 0
 sizey = 0
 
@@ -12,6 +12,7 @@ sizey = 0
 def mapsize(x, y):
     for r in range(x):
         for k in range(y):
+            demomap.append([r,k])
             room = roomClass.Room(r, k)
             mapcord.append(room)
     global sizex
@@ -28,7 +29,7 @@ elif diffpick == '2':
 elif diffpick == '3':
     mapsize(8, 8)
 
-
+print(demomap)
 
 # Set corner coodinates
 ne = 0, sizey-1
