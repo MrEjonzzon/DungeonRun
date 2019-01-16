@@ -10,8 +10,8 @@ def roll_dice(roll):
         result = result+dice
     return result
 
-def fight_order(hero_agility, monster_agility):
-    if roll_dice(hero_agility) > roll_dice(monster_agility):
+def fight_order(hero_initiative, monster_initiative):
+    if roll_dice(hero_initiative) > roll_dice(monster_initiative):
         start = "hero"
         print("hero starts")
         return start
@@ -21,8 +21,8 @@ def fight_order(hero_agility, monster_agility):
         return start
 
 def damage(health):
-    health = health - 1
-    return health
+    new_health = health - 1
+    return new_health
 
 def attack_hero(thief, hero_attack, monster_agility, monster_health):
     hero_attack = roll_dice(hero_attack)
@@ -40,15 +40,14 @@ def attack_hero(thief, hero_attack, monster_agility, monster_health):
         print("hero missed")
         return monster_health
 
-def attack_monster(monster_attack, hero_agility, hero_health, knight):
+def attack_monster(monster_attack, hero_agility, hero_health, knight, knight_count):
     monster_attack = roll_dice(monster_attack)
-    knight_count = 0
+
     hero_agility = roll_dice(hero_agility)
     if monster_attack > hero_agility:
         if knight == 1:
             if knight_count == 0:
                 print("Knight blocked the attack")
-                knight_count = knight_count + 1
                 return hero_health
             else:
                 new_health = damage(hero_health)
