@@ -6,7 +6,8 @@ prevroom = []
 demomap = []
 sizex = 0
 sizey = 0
-
+prevy = 0
+prevx = 0
 
 # Mapsize creator
 def mapsize(x, y):
@@ -52,30 +53,50 @@ elif startroom == '4':
     curx = sizex - 1
     cury = sizey - 1
 
-print(cury, curx)
+print(cury, ".", curx)
 
 # Choose direction
 while True:
     direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east\n").lower()
     if direction == 'w':
+        prevx = curx
+        prevy = cury
+
+        print("\nPrevious room : ", prevy,".", prevx)
+
         for newroom in mapcord:
             if newroom.gety() == (cury - 1) and newroom.getx() == curx:
                 cury = (newroom.gety())
                 break
     elif direction == 's':
+        prevx = curx
+        prevy = cury
+
+        print("Previous room : ", prevy, ".", prevx)
+
         for newroom in mapcord:
             if newroom.gety() == (cury + 1) and newroom.getx() == curx:
                 cury = (newroom.gety())
                 break
     elif direction == 'a':
+        prevx = curx
+        prevy = cury
+
+        print("Previous room : ", prevy, ".", prevx)
+
         for newroom in mapcord:
             if newroom.getx() == (curx - 1) and newroom.gety() == cury:
                 curx = (newroom.getx())
                 break
     elif direction == 'd':
+        prevx = curx
+        prevy = cury
+
+        print("Previous room : ", prevy, ".", prevx)
+
         for newroom in mapcord:
             if newroom.getx() == (curx + 1) and newroom.gety() == cury:
                 curx = (newroom.getx())
                 break
-    print(cury, curx)
+    print(cury, ".", curx)
 
