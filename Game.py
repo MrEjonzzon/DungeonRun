@@ -11,6 +11,7 @@ elif choice == 3:
 else:
     print("Invalid Choice")
 
+
 def fight(monster):
     order = Battle.fight_order(Hero.initiative, monster.initiative)
     current_health_hero = Hero.endurance
@@ -22,7 +23,7 @@ def fight(monster):
             if order == "hero":
                 battle_choice = int(input("1: Attack\n2: Escape\n"))
                 if battle_choice == 1:
-                    current_health_monster = Battle.attack_hero(choice, Hero.attack, monster.agility,current_health_monster)
+                    current_health_monster = Battle.attack_hero(choice, Hero.attack, monster.agility, current_health_monster)
                     order = "monster"
                 elif battle_choice == 2:
                     if Battle.escape(choice, Hero.agility):
