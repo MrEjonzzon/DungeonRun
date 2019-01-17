@@ -1,4 +1,6 @@
 import roomClass
+import Creature
+import Treasure
 mapcord = []
 curx = 0
 cury = 0
@@ -32,8 +34,15 @@ elif diffpick == '3':
     mapsize(8, 8)
 
 
+def show_spider_and_treasure():
+    print(Creature.giant_spider.name, Creature.giant_spider.initiative,
+          Creature.giant_spider.endurance, Creature.giant_spider.attack, Creature.giant_spider.agility)
+    print(Treasure.loose_coins.treasure_name, Treasure.loose_coins.treasure_value)
+
+
 def mapcont_demo():
     print(demomap)
+    show_spider_and_treasure()
     for room in mapcord:
         print(room.monster_list)
 
