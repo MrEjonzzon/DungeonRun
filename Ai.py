@@ -1,6 +1,7 @@
 import Creature
 import Battle
 import Map
+import random
 
 def ai_class(selection):
     if selection == 1:
@@ -32,3 +33,77 @@ def ai_map(size):
     elif size == '3':
         Map.mapsize(8, 8)
 
+def ai_start_room():
+    start_room = random.randint(1, 4)
+    if start_room == 1:
+        curx = 0
+        cury = 0
+    elif start_room == 2:
+        curx = Map.sizex - 1
+        cury = 0
+    elif start_room == 3:
+        curx = 0
+        cury = Map.sizey - 1
+    elif start_room == 4:
+        curx = Map.sizex - 1
+        cury = Map.sizey - 1
+    else:
+        print("Invalid selection")
+
+    print("AI picked", cury, curx, " as its starting position")
+
+def random_direction():
+    direction = random.randint(1, 4)
+    return direction
+
+def ai_move():
+    while True:
+        if random_direction() == 1:
+            Map.prevx = Map.curx
+            Map.prevy = Map.cury
+
+            for newroom in Map.mapcord:
+                if newroom.gety() == (Map.cury - 1) and newroom.getx() == Map.curx:
+                    cury = (newroom.gety())
+                    break
+            if Map.cury == Map.prevy:
+                print("Ai searches the wall for a door but are unable to find one.")
+                continue
+
+        elif random_direction() == 2:
+            Map.prevx = Map.curx
+            Map.prevy = Map.cury
+
+            for newroom in Map.mapcord:
+                if newroom.gety() == (cury + 1) and newroom.getx() == Map.curx:
+                    Map.cury = (newroom.gety())
+                    break
+            if Map.cury == Map.prevy:
+                print("Ai searches the wall for a door but are unable to find one.")
+                continue
+
+        elif random_direction() == 3:
+            Map.prevx = Map.curx
+            Map.prevy = Map.cury
+
+            for newroom in Map.mapcord:
+                if newroom.getx() == (Map.curx - 1) and newroom.gety() == Map.cury:
+                    Map.curx = (newroom.getx())
+                    break
+            if Map.curx == Map.prevx:
+                print("Ai searches the wall for a door but are unable to find one.")
+                continue
+
+        elif random_direction() == 4:
+            Map.prevx = Map.curx
+            Map.prevy = Map.cury
+
+            for newroom in Map.mapcord:
+                if newroom.getx() == (Map.curx + 1) and newroom.gety() == Map.cury:
+                    Map.curx = (newroom.getx())
+                    break
+            if Map.curx == Map.prevx:
+                print("Ai searches the wall for a door but are unable to find one.")
+                continue
+
+        print(Map.cury, Map.curx)

@@ -70,15 +70,25 @@ def player_game():
 
     fight(Creature.skeleton, Creature.troll, Creature.giant_spider, Creature.orc)
 
+
 def ai_game():
     hero_selection = int(input("What class should AI be?\n 1: Knight \n 2: Mage \n 3: Thief \n"))
     Ai.ai_class(hero_selection)
     map_selection = int(input('Choose map size\n[1] Easy\n[2] Medium\n[3] Hard\n'))
     Ai.ai_map(map_selection)
+    Ai.ai_start_room()
+    Ai.ai_move()
 
-selection = int(input("Who is playing? \n[1] Player \n[2] AI\n"))
-if selection == 1:
-    player_game()
-elif selection == 2:
-    ai_game()
+def start_choice():
+    while True:
+        selection = int(input("Who is playing? \n[1] Player \n[2] AI\n"))
+        if selection == 1:
+            player_game()
+        elif selection == 2:
+            ai_game()
+        else:
+            print("Invalid Selection, try again\n")
+
+
+start_choice()
 

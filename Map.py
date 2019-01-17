@@ -41,19 +41,22 @@ def set_coordninates():
 
 # Start room selection
 def start_room():
-    startroom = input('Were would you like to start?\n[1] Northwest\n[2] Northeast\n[3] Southwest\n[4] Southeast\n')
-    if startroom == '1':
+    startroom = int(input('Were would you like to start?\n[1] Northwest\n[2] Northeast\n[3] Southwest\n[4] Southeast\n'))
+    if startroom == 1:
         curx = 0
         cury = 0
-    elif startroom == '2':
+    elif startroom == 2:
         curx = sizex - 1
         cury = 0
-    elif startroom == '3':
+    elif startroom == 3:
         curx = 0
         cury = sizey-1
-    elif startroom == '4':
+    elif startroom == 4:
         curx = sizex - 1
         cury = sizey - 1
+
+    else:
+        print("Invalid selection")
 
     print(cury, curx)
 
