@@ -16,17 +16,16 @@ import random
 
 
 class Treasure:
-    def __init__(self, treasure_name, treasure_value, treasure_rarity):
+    def __init__(self, treasure_name, treasure_value):
         self.treasure_name = treasure_name
         self.treasure_value = treasure_value
-        self.treasure_rarity = treasure_rarity
 
 
-loose_coins = Treasure("loose_coins", 2, 40)
-money_pouch = Treasure("money_pouch", 6, 20)
-gold_jewelry = Treasure("gold_jewelry", 10, 15)
-gemstone = Treasure("gemstone", 14, 10)
-small_treasure_chest = Treasure("small_treasure_chest", 20, 5)
+loose_coins = Treasure("loose_coins", 2)
+money_pouch = Treasure("money_pouch", 6)
+gold_jewelry = Treasure("gold_jewelry", 10)
+gemstone = Treasure("gemstone", 14)
+small_treasure_chest = Treasure("small_treasure_chest", 20)
 
 
 def random_generator():
