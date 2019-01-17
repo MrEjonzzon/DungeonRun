@@ -62,8 +62,6 @@ while True:
         prevx = curx
         prevy = cury
 
-        print("\nPrevious room : ", prevy, prevx)
-
         for newroom in mapcord:
             if newroom.gety() == (cury - 1) and newroom.getx() == curx:
                 cury = (newroom.gety())
@@ -75,8 +73,6 @@ while True:
     elif direction == 's':
         prevx = curx
         prevy = cury
-
-        print("Previous room : ", prevy, prevx)
 
         for newroom in mapcord:
             if newroom.gety() == (cury + 1) and newroom.getx() == curx:
@@ -90,8 +86,6 @@ while True:
         prevx = curx
         prevy = cury
 
-        print("Previous room : ", prevy, prevx)
-
         for newroom in mapcord:
             if newroom.getx() == (curx - 1) and newroom.gety() == cury:
                 curx = (newroom.getx())
@@ -103,8 +97,6 @@ while True:
     elif direction == 'd':
         prevx = curx
         prevy = cury
-
-        print("Previous room : ", prevy, prevx)
 
         for newroom in mapcord:
             if newroom.getx() == (curx + 1) and newroom.gety() == cury:
