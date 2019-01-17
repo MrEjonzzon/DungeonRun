@@ -18,19 +18,33 @@ else:
     print("Invalid Choice")
 
 
-def fight(monster):
-    order = Battle.fight_order(Hero.initiative, monster.initiative)
-    current_health_hero = Hero.endurance
-    current_health_monster = monster.endurance
+def fight(monster_1, monster_2, monster_3, monster_4):
     knight_count = 0
-    while True:
+    order = Battle.fight_order(Hero.initiative, monster_1.initiative)
+    current_health_hero = Hero.endurance
+    current_health_monster_1 = monster_1.endurance
+    current_health_monster_2 = monster_2.endurance
+    current_health_monster_3 = monster_3.endurance
+    current_health_monster_4 = monster_4.endurance
+    hero_order = Battle.roll_dice(Hero.initiative)
+    print(hero_order)
+    monster_1_order = Battle.roll_dice(monster_1.initiative)
+    print(monster_1_order)
+    monster_2_order = Battle.roll_dice(monster_2.initiative)
+    print(monster_2_order)
+    monster_3_order = Battle.roll_dice(monster_3.initiative)
+    print(monster_3_order)
+    monster_4_order = Battle.roll_dice(monster_4.initiative)
+    print(monster_4_order)
+
+    '''while True:
         print("hero hp:", current_health_hero)
         print("monster hp:", current_health_monster)
         if current_health_hero > 0 and current_health_monster > 0:
             if order == "hero":
                 battle_choice = int(input("1: Attack\n2: Escape\n"))
                 if battle_choice == 1:
-                    current_health_monster = Battle.attack_hero(choice, Hero.attack, monster.agility, current_health_monster)
+                    current_health_monster = Battle.attack_hero(choice, Hero.attack, monster_1.agility, current_health_monster)
                     order = "monster"
                 elif battle_choice == 2:
                     if Battle.escape(choice, Hero.agility):
@@ -38,7 +52,7 @@ def fight(monster):
                     else:
                         order = "monster"
             elif order == "monster":
-                current_health_hero = Battle.attack_monster(monster.attack, Hero.agility, current_health_hero, choice, knight_count)
+                current_health_hero = Battle.attack_monster(monster_1.attack, Hero.agility, current_health_hero, choice, knight_count)
                 order = "hero"
                 knight_count = knight_count + 1
             else:
@@ -48,8 +62,8 @@ def fight(monster):
             break
         elif current_health_hero <= 0:
             print("you died")
-            break
+            break'''
 
 
-fight(Creature.skeleton)
+fight(Creature.skeleton, Creature.troll, Creature.giant_spider, Creature.orc)
 
