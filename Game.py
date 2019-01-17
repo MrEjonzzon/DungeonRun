@@ -1,6 +1,7 @@
 import Creature
 import Battle
 import Ai
+import random
 
 def player_game():
     choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
@@ -11,11 +12,11 @@ def player_game():
     elif choice == 2:
         Hero = Creature.Mage
         print("You are a mage\nAttack: " + str(Hero.attack) + "\nEndurance: " + str(Hero.endurance) + "\nAgility: " + str(
-            Hero.agility) + "\nInitiative: " + str(Hero.initiative) + "\nSpecial ability:  You have 80% chanse to escape" + "\n\n")
+            Hero.agility) + "\nInitiative: " + str(Hero.initiative) + "\nSpecial ability:  You have 80% chance to escape" + "\n\n")
     elif choice == 3:
         Hero = Creature.Theif
         print("You are a theif\nAttack: " + str(Hero.attack) + "\nEndurance: " + str(Hero.endurance) + "\nAgility: " + str(
-            Hero.agility) + "\nInitiative: " + str(Hero.initiative) + "\nSpecial ability: You have 25% chanse to dubble your damage" +"\n\n")
+            Hero.agility) + "\nInitiative: " + str(Hero.initiative) + "\nSpecial ability: You have 25% chance to double your damage" +"\n\n")
     else:
         print("Invalid Choice")
 
@@ -71,13 +72,22 @@ def player_game():
     fight(Creature.skeleton, Creature.troll, Creature.giant_spider, Creature.orc)
 
 
+def four_roll():
+    roll = random.randint(1, 4)
+    return roll
+
+def test_ai_move(amount):
+    for i in range(1, amount):
+        Ai.ai_move(four_roll())
+
 def ai_game():
     hero_selection = int(input("What class should AI be?\n 1: Knight \n 2: Mage \n 3: Thief \n"))
     Ai.ai_class(hero_selection)
     map_selection = int(input('Choose map size\n[1] Easy\n[2] Medium\n[3] Hard\n'))
     Ai.ai_map(map_selection)
     Ai.ai_start_room()
-    Ai.ai_move()
+    test_ai_move(10)
+
 
 def start_choice():
     while True:

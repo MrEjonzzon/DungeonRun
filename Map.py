@@ -22,6 +22,7 @@ def mapsize(x, y):
     sizex = x
     sizey = y
 
+
 def map_choice():
     diffpick = input('Choose difficulty!\n[1] Easy\n[2] Medium\n[3] Hard\n')
     if diffpick == '1':
