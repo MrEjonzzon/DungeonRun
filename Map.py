@@ -62,7 +62,7 @@ def start_room():
     print(cury, curx)
 
 # Choose direction
-def choose_direction():
+def choose_direction(curx, cury):
     while True:
         direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east\n").lower()
         if direction == 'w':
@@ -114,3 +114,11 @@ def choose_direction():
                 continue
 
         print(cury, curx)
+
+
+#Kör detta om du vill testa
+'''
+map_choice()
+start_room()
+choose_direction(curx, cury)
+'''

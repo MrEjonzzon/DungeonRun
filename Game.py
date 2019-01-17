@@ -1,6 +1,7 @@
 import Creature
 import Battle
 import Ai
+import Map
 import random
 
 def player_game():
@@ -72,21 +73,15 @@ def player_game():
     fight(Creature.skeleton, Creature.troll, Creature.giant_spider, Creature.orc)
 
 
-def four_roll():
-    roll = random.randint(1, 4)
-    return roll
-
-def test_ai_move(amount):
-    for i in range(1, amount):
-        Ai.ai_move(four_roll())
-
 def ai_game():
     hero_selection = int(input("What class should AI be?\n 1: Knight \n 2: Mage \n 3: Thief \n"))
     Ai.ai_class(hero_selection)
     map_selection = int(input('Choose map size\n[1] Easy\n[2] Medium\n[3] Hard\n'))
     Ai.ai_map(map_selection)
     Ai.ai_start_room()
-    test_ai_move(10)
+    while True:
+        Ai.ai_move(random.randint(1, 4), Map.curx, Map.cury)
+
 
 
 def start_choice():

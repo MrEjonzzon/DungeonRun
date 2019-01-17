@@ -55,55 +55,54 @@ def ai_start_room():
 
 
 
-def ai_move(direction):
+def ai_move(direction, curx, cury):
+
     if direction == 1:
-        Map.prevx = Map.curx
-        Map.prevy = Map.cury
+        prevx = curx
+        prevy = cury
 
         for newroom in Map.mapcord:
-            if newroom.gety() == (Map.cury - 1) and newroom.getx() == Map.curx:
+            if newroom.gety() == (cury - 1) and newroom.getx() == curx:
                 cury = (newroom.gety())
                 break
-        if Map.cury == Map.prevy:
+        if cury == prevy:
             print("Ai searches the wall for a door but are unable to find one.")
 
-
     elif direction == 2:
-        Map.prevx = Map.curx
-        Map.prevy = Map.cury
+        prevx = curx
+        prevy = cury
 
         for newroom in Map.mapcord:
-            if newroom.gety() == (Map.cury + 1) and newroom.getx() == Map.curx:
-                Map.cury = (newroom.gety())
+            if newroom.gety() == (cury + 1) and newroom.getx() == curx:
+                cury = (newroom.gety())
                 break
-        if Map.cury == Map.prevy:
+        if cury == prevy:
             print("Ai searches the wall for a door but are unable to find one.")
 
 
     elif direction == 3:
-        Map.prevx = Map.curx
-        Map.prevy = Map.cury
+        prevx = curx
+        prevy = cury
 
         for newroom in Map.mapcord:
-            if newroom.getx() == (Map.curx - 1) and newroom.gety() == Map.cury:
-                Map.curx = (newroom.getx())
+            if newroom.getx() == (curx - 1) and newroom.gety() == cury:
+                curx = (newroom.getx())
                 break
-        if Map.curx == Map.prevx:
+        if curx == prevx:
             print("Ai searches the wall for a door but are unable to find one.")
-
 
     elif direction == 4:
-        Map.prevx = Map.curx
-        Map.prevy = Map.cury
+        prevx = curx
+        prevy = cury
 
         for newroom in Map.mapcord:
-            if newroom.getx() == (Map.curx + 1) and newroom.gety() == Map.cury:
-                Map.curx = (newroom.getx())
+            if newroom.getx() == (curx + 1) and newroom.gety() == cury:
+                curx = (newroom.getx())
                 break
-        if Map.curx == Map.prevx:
+        if curx == prevx:
             print("Ai searches the wall for a door but are unable to find one.")
 
-        print(Map.cury, Map.curx)
+    print(cury, curx)
 
 
 
