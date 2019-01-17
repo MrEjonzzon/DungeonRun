@@ -32,24 +32,12 @@ elif diffpick == '3':
     mapsize(8, 8)
 
 
-def mapcont_demo():
-    print(demomap)
-    for room in mapcord:
-        print(room.monster_list)
-
-    print("\n")
-
-    for room in mapcord:
-        print(room.treasure_list)
-
-
 # Set corner coodinates
 ne = 0, sizey-1
 sw = sizex-1, 0
 se = sizex-1, sizey-1
 
 
-mapcont_demo()
 # Start room selection
 startroom = input('Were would you like to start?\n[1] Northwest\n[2] Northeast\n[3] Southwest\n[4] Southeast\n')
 if startroom == '1':
@@ -65,7 +53,7 @@ elif startroom == '4':
     curx = sizex - 1
     cury = sizey - 1
 
-print(cury, ".", curx)
+print(cury, curx)
 
 # Choose direction
 while True:
@@ -74,41 +62,56 @@ while True:
         prevx = curx
         prevy = cury
 
-        print("\nPrevious room : ", prevy,".", prevx)
+        print("\nPrevious room : ", prevy, prevx)
 
         for newroom in mapcord:
             if newroom.gety() == (cury - 1) and newroom.getx() == curx:
                 cury = (newroom.gety())
                 break
+        if cury == prevy:
+            print("You search the wall for a door but are unable to find one.")
+            continue
+
     elif direction == 's':
         prevx = curx
         prevy = cury
 
-        print("Previous room : ", prevy, ".", prevx)
+        print("Previous room : ", prevy, prevx)
 
         for newroom in mapcord:
             if newroom.gety() == (cury + 1) and newroom.getx() == curx:
                 cury = (newroom.gety())
                 break
+        if cury == prevy:
+            print("You search the wall for a door but are unable to find one.")
+            continue
+
     elif direction == 'a':
         prevx = curx
         prevy = cury
 
-        print("Previous room : ", prevy, ".", prevx)
+        print("Previous room : ", prevy, prevx)
 
         for newroom in mapcord:
             if newroom.getx() == (curx - 1) and newroom.gety() == cury:
                 curx = (newroom.getx())
                 break
+        if curx == prevx:
+            print("You search the wall for a door but are unable to find one.")
+            continue
+
     elif direction == 'd':
         prevx = curx
         prevy = cury
 
-        print("Previous room : ", prevy, ".", prevx)
+        print("Previous room : ", prevy, prevx)
 
         for newroom in mapcord:
             if newroom.getx() == (curx + 1) and newroom.gety() == cury:
                 curx = (newroom.getx())
                 break
-    print(cury, ".", curx)
+        if curx == prevx:
+            print("You search the wall for a door but are unable to find one.")
+            continue
 
+    print(cury, curx)
