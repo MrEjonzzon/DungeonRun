@@ -33,6 +33,7 @@ def ai_map(size):
     elif size == '3':
         Map.mapsize(8, 8)
 
+
 def ai_start_room():
     start_room = random.randint(1, 4)
     if start_room == 1:
@@ -43,7 +44,7 @@ def ai_start_room():
         Map.cury = 0
     elif start_room == 3:
         Map.curx = 0
-        Map. cury = Map.sizey - 1
+        Map.cury = Map.sizey - 1
     elif start_room == 4:
         Map.curx = Map.sizex - 1
         Map.cury = Map.sizey - 1
@@ -53,10 +54,8 @@ def ai_start_room():
     print("AI picked", Map.cury, Map.curx, " as its starting position")
 
 
-
-
-def ai_move(direction, curx, cury):
-
+def ai_move(curx, cury):
+    direction = random.randint(1, 4)
     if direction == 1:
         prevx = curx
         prevy = cury
@@ -66,7 +65,8 @@ def ai_move(direction, curx, cury):
                 cury = (newroom.gety())
                 break
         if cury == prevy:
-            print("Ai searches the wall for a door but are unable to find one.")
+            print("You search the wall for a door but are unable to find one.")
+
 
     elif direction == 2:
         prevx = curx
@@ -77,7 +77,7 @@ def ai_move(direction, curx, cury):
                 cury = (newroom.gety())
                 break
         if cury == prevy:
-            print("Ai searches the wall for a door but are unable to find one.")
+            print("You search the wall for a door but are unable to find one.")
 
 
     elif direction == 3:
@@ -89,7 +89,8 @@ def ai_move(direction, curx, cury):
                 curx = (newroom.getx())
                 break
         if curx == prevx:
-            print("Ai searches the wall for a door but are unable to find one.")
+            print("You search the wall for a door but are unable to find one.")
+
 
     elif direction == 4:
         prevx = curx
@@ -100,7 +101,8 @@ def ai_move(direction, curx, cury):
                 curx = (newroom.getx())
                 break
         if curx == prevx:
-            print("Ai searches the wall for a door but are unable to find one.")
+            print("You search the wall for a door but are unable to find one.")
+
 
     print(cury, curx)
 

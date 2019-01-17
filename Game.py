@@ -79,8 +79,8 @@ def ai_game():
     map_selection = int(input('Choose map size\n[1] Easy\n[2] Medium\n[3] Hard\n'))
     Ai.ai_map(map_selection)
     Ai.ai_start_room()
-    while True:
-        Ai.ai_move(random.randint(1, 4), Map.curx, Map.cury)
+    Ai.ai_move(Map.curx, Map.cury)
+    Ai.ai_move(Map.curx, Map.cury)
 
 
 
