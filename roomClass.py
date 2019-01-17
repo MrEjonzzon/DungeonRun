@@ -14,6 +14,7 @@ class Room:
         self.monster_list.append(Creature.orc_rarity())
         self.monster_list.append(Creature.troll_rarity())
         self.treasure_list.append(Treasure.gemstone_rarity())
+        self.treasure_list.append(Treasure.money_pouch_rarity())
         self.treasure_list.append(Treasure.gold_jewelry_rarity())
         self.treasure_list.append(Treasure.loose_coins_rarity())
         self.treasure_list.append(Treasure.small_treasure_chest_rarity())
