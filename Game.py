@@ -63,7 +63,7 @@ def player_game():
                       "\n", monster_3.name, "hp:", current_health_monster_3, "\n", monster_4.name, "hp:", current_health_monster_4)
 
                 if hero_order >= monster_1_order and hero_order >= monster_2_order and hero_order >= monster_3_order and hero_order >= monster_4_order:
-                    print("What monster do you want to attack?\n1:", monster_1.name, "\n2:", monster_2.name, "\n3:", monster_3.name, "\n4:", monster_4.name)
+                    print("What monster do you want to attack?\n1:", monster_1.name, "\n2:", monster_2.name, "\n3:", monster_3.name, "\n4:", monster_4.name, "\n5: Run")
                     attack_who = int(input())
 
                     if attack_who == 1:
@@ -74,6 +74,10 @@ def player_game():
                         current_health_monster_3 = Battle.attack_hero(choice, Hero.attack, monster_3.agility, current_health_monster_3)
                     elif attack_who == 4:
                         current_health_monster_4 = Battle.attack_hero(choice, Hero.attack, monster_4.agility, current_health_monster_4)
+                    elif attack_who == 5:
+                        if Battle.escape(choice, Hero.agility):
+                            break
+                            print("hero escaped")
                     i = i + 1
                     hero_order = 0
                 elif monster_1_order >= hero_order and monster_1_order >= monster_2_order and monster_1_order >= monster_3_order and monster_1_order >= monster_4_order:
