@@ -3,8 +3,24 @@ import Battle
 import Ai
 import Map
 import random
+from Save import GameState
 
 def player_game():
+
+    def player_info():
+        option = int(input("Choose a name for new player or choose existing player: \n[1] New player \n[2] Existing Player \n"))
+        if option == 1:
+            print("pass1") # Test purpose, Delete later
+
+        elif option == 2:# Test purpose, Delete later
+            print("pass2")
+        else:
+            print("Invalid choice")
+            player_info()
+    player_info()
+
+    game_state=GameState
+
     choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
     if choice == 1:
         Hero = Creature.Knight
@@ -20,7 +36,6 @@ def player_game():
             Hero.agility) + "\nInitiative: " + str(Hero.initiative) + "\nSpecial ability: You have 25% chance to double your damage" +"\n\n")
     else:
         print("Invalid Choice")
-
 
     def fight(monster_1, monster_2, monster_3, monster_4):
         knight_count = 0
@@ -120,7 +135,6 @@ def player_game():
 
     fight(Creature.skeleton, Creature.troll, Creature.giant_spider, Creature.orc)
 
-
 def ai_game():
     hero_selection = int(input("What class should AI be?\n 1: Knight \n 2: Mage \n 3: Thief \n"))
     Ai.ai_class(hero_selection)
@@ -129,7 +143,6 @@ def ai_game():
     Ai.ai_start_room()
     Ai.ai_move(Map.curx, Map.cury)
     Ai.ai_move(Map.curx, Map.cury)
-
 
 
 def start_choice():
@@ -144,4 +157,3 @@ def start_choice():
 
 
 start_choice()
-
