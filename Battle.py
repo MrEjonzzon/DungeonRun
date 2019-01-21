@@ -40,7 +40,7 @@ def attack_hero(thief, hero_attack, monster_agility, monster_health):
         else:
             print("hero hit")
             return new_health
-    elif monster_agility > hero_attack:
+    else:
         print("hero missed")
         return monster_health
 
@@ -62,7 +62,7 @@ def attack_monster(monster_attack, hero_agility, hero_health, knight, knight_cou
             new_health = damage(hero_health)
             print("monster hit")
             return new_health
-    elif hero_agility > monster_attack:
+    else:
         print("monster missed")
         return hero_health
 

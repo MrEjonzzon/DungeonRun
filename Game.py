@@ -16,9 +16,9 @@ def player_game():
         else:
             print("Invalid choice")
             player_info()
-    player_info()
+    #player_info()
 
-    game_state=GameState
+    #game_state=GameState
 
     choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
     if choice == 1:
@@ -37,6 +37,7 @@ def player_game():
         print("Invalid Choice")
 
     def fight(monster_1, monster_2, monster_3, monster_4):
+
         knight_count = 0
         #order = Battle.fight_order(Hero.initiative, monster_1.initiative)
         current_health_hero = Hero.endurance
@@ -58,8 +59,8 @@ def player_game():
 
             i = 0
             while i < 5:
-                print(" Hero hp: ", current_health_hero, "\n", monster_1.name," hp: ", current_health_monster_1, "\n", monster_2.name," hp: ", current_health_monster_2,
-                      "\n", monster_3.name," hp: ", current_health_monster_3, "\n", monster_4.name," hp: ", current_health_monster_4)
+                print(" Hero hp:", current_health_hero, "\n", monster_1.name,"hp:", current_health_monster_1, "\n", monster_2.name,"hp:", current_health_monster_2,
+                      "\n", monster_3.name, "hp:", current_health_monster_3, "\n", monster_4.name, "hp:", current_health_monster_4)
 
                 if hero_order >= monster_1_order and hero_order >= monster_2_order and hero_order >= monster_3_order and hero_order >= monster_4_order:
                     print("What monster do you want to attack?\n1:", monster_1.name, "\n2:", monster_2.name, "\n3:", monster_3.name, "\n4:", monster_4.name)
