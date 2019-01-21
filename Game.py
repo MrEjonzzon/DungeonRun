@@ -3,10 +3,9 @@ import Battle
 import Ai
 import Map
 import random
-from Save import GameState
+'''from Save import GameState'''
 
 def player_game():
-
     def player_info():
         option = int(input("Choose a name for new player or choose existing player: \n[1] New player \n[2] Existing Player \n"))
         if option == 1:
@@ -89,12 +88,8 @@ def player_game():
 def ai_game():
     hero_selection = int(input("What class should AI be?\n 1: Knight \n 2: Mage \n 3: Thief \n"))
     Ai.ai_class(hero_selection)
-    map_selection = int(input('Choose map size\n[1] Easy\n[2] Medium\n[3] Hard\n'))
-    Ai.ai_map(map_selection)
+    Ai.ai_map_choice()
     Ai.ai_start_room()
-    Ai.ai_move(Map.curx, Map.cury)
-    Ai.ai_move(Map.curx, Map.cury)
-
 
 def start_choice():
     while True:

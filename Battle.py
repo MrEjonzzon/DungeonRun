@@ -84,7 +84,5 @@ def escape(Mage, agility):
             print("Stay in the room sir ")
             return False
 
-
-
-
+print(roll_dice(1))
 

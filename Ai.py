@@ -2,6 +2,7 @@ import Creature
 import Battle
 import Map
 import random
+import roomClass
 
 def ai_class(selection):
     if selection == 1:
@@ -25,86 +26,86 @@ def ai_class(selection):
     else:
         print("Invalid selection")
 
-def ai_map(size):
-    if size == '1':
-        Map.mapsize(4, 4)
-    elif size == '2':
-        Map.mapsize(5, 5)
-    elif size == '3':
-        Map.mapsize(8, 8)
-
-
 def ai_start_room():
-    start_room = random.randint(1, 4)
-    if start_room == 1:
-        Map.curx = 0
-        Map.cury = 0
-    elif start_room == 2:
-        Map.curx = Map.sizex - 1
-        Map.cury = 0
-    elif start_room == 3:
-        Map.curx = 0
-        Map.cury = Map.sizey - 1
-    elif start_room == 4:
-        Map.curx = Map.sizex - 1
-        Map.cury = Map.sizey - 1
-    else:
-        print("Invalid selection")
-
-    print("AI picked", Map.cury, Map.curx, " as its starting position")
+    Map.curx = 0
+    Map.cury = 0
 
 
-def ai_move(curx, cury):
-    direction = random.randint(1, 4)
-    if direction == 1:
-        prevx = curx
-        prevy = cury
 
+def ai_move_right():
+    print(Map.cury, Map.curx)
+    for room in Map.mapcord:
+            Map.prevx = Map.curx
+            Map.prevy = Map.cury
+            for newroom in Map.mapcord:
+                if newroom.getx() == (Map.curx + 1) and newroom.gety() == Map.cury:
+                    Map.curx = (newroom.getx())
+                    print(Map.cury, Map.curx)
+def ai_move_left():
+    print(Map.cury, Map.curx)
+    for room in Map.mapcord:
+        Map.prevx = Map.curx
+        Map.prevy = Map.cury
         for newroom in Map.mapcord:
-            if newroom.gety() == (cury - 1) and newroom.getx() == curx:
-                cury = (newroom.gety())
-                break
-        if cury == prevy:
-            print("You search the wall for a door but are unable to find one.")
+            if newroom.getx() == (Map.curx - 1) and newroom.gety() == Map.cury:
+                Map.curx = (newroom.getx())
+                print(Map.cury, Map.curx)
 
 
-    elif direction == 2:
-        prevx = curx
-        prevy = cury
+def ai_move_easy():
+    ai_move_right()
+    Map.cury += 1
+    ai_move_left()
+    Map.cury += 1
+    ai_move_right()
+    Map.cury += 1
+    ai_move_left()
 
-        for newroom in Map.mapcord:
-            if newroom.gety() == (cury + 1) and newroom.getx() == curx:
-                cury = (newroom.gety())
-                break
-        if cury == prevy:
-            print("You search the wall for a door but are unable to find one.")
+def ai_move_medium():
+    ai_move_right()
+    Map.cury += 1
+    ai_move_left()
+    Map.cury += 1
+    ai_move_right()
+    Map.cury += 1
+    ai_move_left()
+    Map.cury += 1
+    ai_move_right()
+
+def ai_move_hard():
+    ai_move_right()
+    Map.cury += 1
+    ai_move_left()
+    Map.cury += 1
+    ai_move_right()
+    Map.cury += 1
+    ai_move_left()
+    Map.cury += 1
+    ai_move_right()
+    Map.cury += 1
+    ai_move_left()
+    Map.cury += 1
+    ai_move_right()
+    Map.cury += 1
+    ai_move_left()
+
+def ai_map_choice():
+    diffpick = input('Choose difficulty!\n[1] Easy\n[2] Medium\n[3] Hard\n')
+    if diffpick == '1':
+        Map.mapsize(4, 4)
+        ai_start_room()
+        ai_move_easy()
+    elif diffpick == '2':
+        Map.mapsize(5, 5)
+        ai_start_room()
+        ai_move_medium()
+    elif diffpick == '3':
+        Map.mapsize(8, 8)
+        ai_start_room()
+        ai_move_hard()
 
 
-    elif direction == 3:
-        prevx = curx
-        prevy = cury
 
-        for newroom in Map.mapcord:
-            if newroom.getx() == (curx - 1) and newroom.gety() == cury:
-                curx = (newroom.getx())
-                break
-        if curx == prevx:
-            print("You search the wall for a door but are unable to find one.")
-
-
-    elif direction == 4:
-        prevx = curx
-        prevy = cury
-
-        for newroom in Map.mapcord:
-            if newroom.getx() == (curx + 1) and newroom.gety() == cury:
-                curx = (newroom.getx())
-                break
-        if curx == prevx:
-            print("You search the wall for a door but are unable to find one.")
-
-
-    print(cury, curx)
 
 
 
