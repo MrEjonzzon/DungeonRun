@@ -83,8 +83,3 @@ def escape(Mage, agility):
         else:
             print("Stay in the room sir ")
             return False
-
-
-
-
-
