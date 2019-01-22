@@ -47,8 +47,9 @@ class Game:
         hero_selection = int(input("What class should AI be?\n 1: Knight \n 2: Mage \n 3: Thief \n"))
         sada = ai.Ai(1, 2, 34, 4, creature.Knight)
         sada.ai_class(hero_selection)
-        sada.ai_map_choice()
-        sada.ai_start_room()
+        mymap.ai_map_choice()
+        mymap.start_room()
+        mymap.moving()
 
     def start_choice(self):
         while True:
@@ -67,9 +68,9 @@ def main():
     mymap = map.Map()
     g = Game()
     Game.start_choice(g)
-    sada = ai.Ai(1, 2, 34, 4, creature.Knight)
+    sada = ai.Ai()
     sada.ai_class(hero_selection)
-    
+
 
 
 if __name__ == "__main__":

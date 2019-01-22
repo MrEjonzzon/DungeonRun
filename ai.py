@@ -96,20 +96,6 @@ class Ai:
         map.cury += 1
         ai_move_left()
 
-    def ai_map_choice(self):
-        diffpick = input('Choose difficulty!\n[1] Easy\n[2] Medium\n[3] Hard\n')
-        if diffpick == '1':
-            map.mapsize(4, 4)
-            ai_start_room()
-            ai_move_easy()
-        elif diffpick == '2':
-            map.mapsize(5, 5)
-            ai_start_room()
-            ai_move_medium()
-        elif diffpick == '3':
-            map.mapsize(8, 8)
-            ai_start_room()
-            ai_move_hard()
 
 
 

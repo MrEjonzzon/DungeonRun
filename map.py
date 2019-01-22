@@ -1,6 +1,6 @@
 import room_class
 import game
-
+import random
 
 class Map:
     # Mapsize creator
@@ -35,6 +35,21 @@ class Map:
         elif diffpick == '3':
             self.mapsize(8, 8)
 
+    def ai_map_choice(self):
+
+        aichoice = random.randint(1, 3)
+
+        if aichoice == 1:
+            self.mapsize(4, 4)
+        elif aichoice == 2:
+            self.mapsize(5, 5)
+        elif aichoice == 3:
+            self.mapsize(8, 8)
+
+    def ai_start(self):
+        mymap.ai_map_choice()
+        mymap.start_room()
+        mymap.moving()
 
     # Set corner coodinates
         ne = 0, sizey-1
@@ -126,3 +141,5 @@ class Map:
                 if curx == prevx:
                     print("You search the wall for a door but are unable to find one.")
                     continue
+
+
