@@ -17,7 +17,7 @@ class Ai:
             print("Ai is a knight\nAttack: " + str(self.hero.attack) + "\nEndurance: "
                   + str(self.hero.endurance)+ "\nAgility: "
                   + str(self.hero.agility) + "\nInitiative: "
-                  + str(elf.hero.initiative) + "\nSpecial ability: You block the first hit from a monster" + "\n\n")
+                  + str(self.hero.initiative) + "\nSpecial ability: You block the first hit from a monster" + "\n\n")
         elif selection == 2:
             self.hero = creature.Mage
             print("Ai is a mage\nAttack: " + str(self.hero.attack) + "\nEndurance: " + str(
