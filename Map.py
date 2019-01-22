@@ -1,4 +1,5 @@
 import roomClass
+import Game
 mapcord = []
 curx = 0
 cury = 0
@@ -71,7 +72,9 @@ def moving():
             for newroom in mapcord:
                 if newroom.gety() == (cury - 1) and newroom.getx() == curx:
                     cury = (newroom.gety())
-                    break
+                    if newroom.Room.getmon():
+                        Game.fight(roomClass.Room.getmon())
+                        break
             if cury == prevy:
                 print("You search the wall for a door but are unable to find one.")
                 continue
