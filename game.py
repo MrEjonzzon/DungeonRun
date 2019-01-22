@@ -1,4 +1,8 @@
 import map
+import creature
+import ai
+import battle
+
 '''from Save import GameState'''
 
 
@@ -6,9 +10,9 @@ class Game:
     def player_info(self):
         option = int(input("Choose a name for new player or choose existing player: \n[1] New player \n[2] Existing Player \n"))
         if option == 1:
-            print("pass1") # Test purpose, Delete later
+            print("pass1")  # Test purpose, Delete later
             self.Choose_class()
-        elif option == 2:# Test purpose, Delete later
+        elif option == 2:  # Test purpose, Delete later
             print("pass2")
         else:
             print("Invalid choice")
@@ -32,9 +36,9 @@ class Game:
         else:
             print("Invalid Choice")
 
-        mmymap.map_choice()
-        mmymap.start_room()
-        mmymap.moving()
+        mymap.map_choice()
+        mymap.start_room()
+        mymap.moving()
 
     def call_fight(self, monster_list):
         battle.fight(monster_list, Hero, choice)
@@ -56,10 +60,13 @@ class Game:
             else:
                 print("Invalid Selection, try again\n")
 
+
 def main():
-    mmymap = map.Map()
+    global mymap
+    mymap = map.Map()
     g = Game()
     Game.start_choice(g)
+
 
 if __name__ == "__main__":
     main()

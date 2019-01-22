@@ -62,19 +62,19 @@ class Map:
 
     # Choose direction
     def moving(self):
-        global curx
-        global cury
         while True:
             direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east\n").lower()
+            prevx = self.curx
+            prevy = self.cury
+            curx = self.curx
+            cury = self.cury
             if direction == 'w':
-                prevx = curx
-                prevy = cury
 
-                for newroom in mapcord:
+                for newroom in self.mapcord:
                     if newroom.gety() == (cury - 1) and newroom.getx() == curx:
                         cury = (newroom.gety())
-                        if newroom.Room.getmon():
-                            game.call_fight(newroom.Room.monster_list)
+                        if newroom.getmon():
+                            game.call_fight(newroom.monster_list)
                             break
                         else:
                             break
@@ -84,14 +84,11 @@ class Map:
                     continue
 
             elif direction == 's':
-                prevx = curx
-                prevy = cury
-
-                for newroom in mapcord:
+                for newroom in self.mapcord:
                     if newroom.gety() == (cury + 1) and newroom.getx() == curx:
                         cury = (newroom.gety())
-                        if newroom.Room.getmon():
-                            game.call_fight(newroom.Room.monster_list)
+                        if newroom.getmon():
+                            game.call_fight(newroom.monster_list)
                             break
                         else:
                             break
@@ -101,14 +98,12 @@ class Map:
                     continue
 
             elif direction == 'a':
-                prevx = curx
-                prevy = cury
 
-                for newroom in mapcord:
+                for newroom in self.mapcord:
                     if newroom.getx() == (curx - 1) and newroom.gety() == cury:
                         curx = (newroom.getx())
-                        if newroom.Room.getmon():
-                            game.call_fight(newroom.Room.monster_list)
+                        if newroom.getmon():
+                            game.call_fight(newroom.monster_list)
                             break
                         else:
                             break
@@ -118,14 +113,12 @@ class Map:
                     continue
 
             elif direction == 'd':
-                prevx = curx
-                prevy = cury
 
-                for newroom in mapcord:
+                for newroom in self.mapcord:
                     if newroom.getx() == (curx + 1) and newroom.gety() == cury:
                         curx = (newroom.getx())
                         if newroom.getmon():
-                            game.call_fight(newroom.Room.monster_list)
+                            game.call_fight(newroom.monster_list)
                             break
                         else:
                             break
@@ -133,4 +126,3 @@ class Map:
                 if curx == prevx:
                     print("You search the wall for a door but are unable to find one.")
                     continue
-

@@ -62,6 +62,7 @@ orc = Monster("Orc", 6, 3, 4, 4)
 troll = Monster("Troll", 2, 4, 7, 2)
 noone = Monster("", 0, 0, 0, 0)
 
+
 def random_generator():
     roll = (random.randint(1, 100))
     return roll
