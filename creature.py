@@ -1,5 +1,5 @@
 import random
-import Battle
+
 
 class Mage:
     attack = int(9)

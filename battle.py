@@ -1,5 +1,5 @@
 import random
-import Creature
+import creature
 
 
 def roll_dice(roll):
@@ -22,7 +22,7 @@ def attack_hero(thief, hero_attack, monster_agility, monster_health):
     monster_agility = roll_dice(monster_agility)
     if hero_attack > monster_agility:
         new_health = damage(monster_health)
-        if thief == 3 and Creature.Theif.ability(False) == True:
+        if thief == 3 and creature.Theif.ability(False) == True:
             new_health = damage(new_health)
             print("thif hit double")
             return new_health
@@ -57,10 +57,10 @@ def attack_monster(monster_attack, hero_agility, hero_health, knight, knight_cou
 
 
 def escape(Mage, agility):
-    if Mage == 2 and Creature.Mage.ability(False) == True:
+    if Mage == 2 and creature.Mage.ability(False) == True:
         print("Mage fled the scene")
         return True
-    elif Mage == 2 and Creature.Mage.ability(False) == False:
+    elif Mage == 2 and creature.Mage.ability(False) == False:
         print("Stay in room mage")
         return False
     else:
@@ -73,29 +73,29 @@ def escape(Mage, agility):
             print("Stay in the room sir ")
             return False
 
-def fight(true_1, true_2, true_3, true_4, Hero, choice):
+def fight(monster_list, Hero, choice):
     rounds = 1
     escape = False
-    if true_1:
-        monster_1 = Creature.giant_spider
+    if monster_list[0] is True:
+        monster_1 = creature.giant_spider
         rounds = rounds + 1
     else:
-        monster_1 = Creature.noone
-    if true_2:
-        monster_2 = Creature.skeleton
+        monster_1 = creature.noone
+    if monster_list[1] is True:
+        monster_2 = creature.skeleton
         rounds = rounds + 1
     else:
-        monster_2 = Creature.noone
-    if true_3:
-        monster_3 = Creature.orc
+        monster_2 = creature.noone
+    if monster_list[2] is True:
+        monster_3 = creature.orc
         rounds = rounds + 1
     else:
-        monster_3 = Creature.noone
-    if true_4:
-        monster_4 = Creature.troll
+        monster_3 = creature.noone
+    if monster_list[3] is True:
+        monster_4 = creature.troll
         rounds = rounds + 1
     else:
-        monster_4 = Creature.noone
+        monster_4 = creature.noone
 
     knight_count = 0
     #order = Battle.fight_order(Hero.initiative, monster_1.initiative)
