@@ -1,5 +1,5 @@
 import random
-
+import Battle
 
 class Mage:
     attack = int(9)
@@ -44,12 +44,22 @@ class Monster:
         self.attack = attack
         self.agility = agility
 
+        self.inRoll = 0
+
+    def monIn(self):
+        result = 0
+        i = 0
+        while i < self.initiative:
+            dice = random.randint(1, 6)
+            i = i + 1
+            result = result + dice
+        self.inRoll = result
+
 
 giant_spider = Monster("Giant Spider", 7, 1, 2, 3)
 skeleton = Monster("Skeleton", 4, 2, 3, 3)
 orc = Monster("Orc", 6, 3, 4, 4)
 troll = Monster("Troll", 2, 4, 7, 2)
-
 
 
 def random_generator():

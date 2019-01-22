@@ -25,3 +25,5 @@ class Room:
     def gety(self):
         return self.y
 
+    def getmon(self):
+        return self.monster_list

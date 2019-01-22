@@ -12,17 +12,6 @@ def roll_dice(roll):
     return result
 
 
-def fight_order(hero_initiative, monster_initiative):
-    if roll_dice(hero_initiative) > roll_dice(monster_initiative):
-        start = "hero"
-        print("hero starts")
-        return start
-    else:
-        print("monster starts")
-        start = "monster"
-        return start
-
-
 def damage(health):
     new_health = health - 1
     return new_health

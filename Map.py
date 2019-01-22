@@ -14,7 +14,6 @@ prevx = 0
 def mapsize(x, y):
     for r in range(x):
         for k in range(y):
-            demomap.append([r, k])
             room = roomClass.Room(r, k)
             mapcord.append(room)
     global sizex
@@ -34,7 +33,6 @@ def map_choice():
 
 
 # Set corner coodinates
-def set_coordninates():
     ne = 0, sizey-1
     sw = sizex-1, 0
     se = sizex-1, sizey-1
@@ -59,10 +57,11 @@ def start_room():
     else:
         print("Invalid selection")
 
-    print(cury, curx)
 
 # Choose direction
-def choose_direction(curx, cury):
+def moving():
+    global curx
+    global cury
     while True:
         direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east\n").lower()
         if direction == 'w':
@@ -112,13 +111,11 @@ def choose_direction(curx, cury):
             if curx == prevx:
                 print("You search the wall for a door but are unable to find one.")
                 continue
-
         print(cury, curx)
 
 
 #Kör detta om du vill testa
-'''
+
 map_choice()
 start_room()
-choose_direction(curx, cury)
-'''
+moving()
