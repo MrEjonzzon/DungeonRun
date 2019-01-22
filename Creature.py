@@ -49,7 +49,7 @@ giant_spider = Monster("Giant Spider", 7, 1, 2, 3)
 skeleton = Monster("Skeleton", 4, 2, 3, 3)
 orc = Monster("Orc", 6, 3, 4, 4)
 troll = Monster("Troll", 2, 4, 7, 2)
-
+noone = Monster("", 0, 0, 0, 0)
 
 
 def random_generator():

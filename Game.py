@@ -36,7 +36,28 @@ def player_game():
     else:
         print("Invalid Choice")
 
-    def fight(monster_1, monster_2, monster_3, monster_4):
+    def fight(true_1, true_2, true_3, true_4):
+        rounds = 1
+        if true_1:
+            monster_1 = Creature.giant_spider
+            rounds = rounds + 1
+        else:
+            monster_1 = Creature.noone
+        if true_2:
+            monster_2 = Creature.skeleton
+            rounds = rounds + 1
+        else:
+            monster_2 = Creature.noone
+        if true_3:
+            monster_3 = Creature.orc
+            rounds = rounds + 1
+        else:
+            monster_3 = Creature.noone
+        if true_4:
+            monster_4 = Creature.troll
+            rounds = rounds + 1
+        else:
+            monster_4 = Creature.noone
 
         knight_count = 0
         #order = Battle.fight_order(Hero.initiative, monster_1.initiative)
@@ -58,22 +79,49 @@ def player_game():
             monster_4_order = monster_4_order1
 
             i = 0
-            while i < 5:
-                print(" Hero hp:", current_health_hero, "\n", monster_1.name,"hp:", current_health_monster_1, "\n", monster_2.name,"hp:", current_health_monster_2,
-                      "\n", monster_3.name, "hp:", current_health_monster_3, "\n", monster_4.name, "hp:", current_health_monster_4)
+            while i < rounds:
+                print("Hero hp:", current_health_hero)
+                if true_1:
+                    print(monster_1.name,"hp:", current_health_monster_1)
+                if true_2:
+                    print(monster_2.name,"hp:", current_health_monster_2)
+                if true_3:
+                    print(monster_3.name, "hp:", current_health_monster_3)
+                if true_4:
+                    print(monster_4.name, "hp:", current_health_monster_4)
 
                 if hero_order >= monster_1_order and hero_order >= monster_2_order and hero_order >= monster_3_order and hero_order >= monster_4_order:
-                    print("What monster do you want to attack?\n1:", monster_1.name, "\n2:", monster_2.name, "\n3:", monster_3.name, "\n4:", monster_4.name, "\n5: Run")
+                    print("What monster do you want to attack?")
+                    if true_1:
+                        print("[1]", monster_1.name)
+                    if true_2:
+                        print("[2]", monster_2.name)
+                    if true_3:
+                        print("[3]", monster_3.name)
+                    if true_4:
+                        print("[4]", monster_4.name)
                     attack_who = int(input())
 
                     if attack_who == 1:
-                        current_health_monster_1 = Battle.attack_hero(choice, Hero.attack, monster_1.agility, current_health_monster_1)
+                        if true_1:
+                            current_health_monster_1 = Battle.attack_hero(choice, Hero.attack, monster_1.agility, current_health_monster_1)
+                        else:
+                            print("Invalid Choice")
                     elif attack_who == 2:
-                        current_health_monster_2 = Battle.attack_hero(choice, Hero.attack, monster_2.agility, current_health_monster_2)
+                        if true_2:
+                            current_health_monster_2 = Battle.attack_hero(choice, Hero.attack, monster_2.agility, current_health_monster_2)
+                        else:
+                            print("Invalid Choice")
                     elif attack_who == 3:
-                        current_health_monster_3 = Battle.attack_hero(choice, Hero.attack, monster_3.agility, current_health_monster_3)
+                        if true_3:
+                            current_health_monster_3 = Battle.attack_hero(choice, Hero.attack, monster_3.agility, current_health_monster_3)
+                        else:
+                            print("Invalid Choice")
                     elif attack_who == 4:
-                        current_health_monster_4 = Battle.attack_hero(choice, Hero.attack, monster_4.agility, current_health_monster_4)
+                        if true_4:
+                            current_health_monster_4 = Battle.attack_hero(choice, Hero.attack, monster_4.agility, current_health_monster_4)
+                        else:
+                            print("Invalid Choice")
                     elif attack_who == 5:
                         if Battle.escape(choice, Hero.agility):
                             break
@@ -109,35 +157,8 @@ def player_game():
                     knight_count = knight_count + 1
                     i = i + 1
 
-        '''while True:
-            print("hero hp:", current_health_hero)
-            print("monster hp:", current_health_monster)
-            if current_health_hero > 0 and current_health_monster > 0:
-                if order == "hero":
-                    battle_choice = int(input("1: Attack\n2: Escape\n"))
-                    if battle_choice == 1:
-                        current_health_monster = Battle.attack_hero(choice, Hero.attack, monster_1.agility, current_health_monster)
-                        order = "monster"
-                    elif battle_choice == 2:
-                        if Battle.escape(choice, Hero.agility):
-                            break
-                        else:
-                            order = "monster"
-                elif order == "monster":
-                    current_health_hero = Battle.attack_monster(monster_1.attack, Hero.agility, current_health_hero, choice, knight_count)
-                    order = "hero"
-                    knight_count = knight_count + 1
-                else:
-                    print("Invalid Choice")
-            elif current_health_monster <= 0:
-                print("monster died")
-                break
-            elif current_health_hero <= 0:
-                print("you died")
-                break'''
 
-
-    fight(Creature.skeleton, Creature.troll, Creature.giant_spider, Creature.orc)
+    fight(True, False, False, True)
 
 def ai_game():
     hero_selection = int(input("What class should AI be?\n 1: Knight \n 2: Mage \n 3: Thief \n"))
