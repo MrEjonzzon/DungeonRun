@@ -1,6 +1,7 @@
 import map
 import player
 import ai
+import header
 
 
 class Game:
@@ -40,6 +41,7 @@ class Game:
 
 
 def main():
+    header.Meny_DR()
     global Map
     global ai_map
     Map = map.Map()
