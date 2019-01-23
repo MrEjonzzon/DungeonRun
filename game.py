@@ -46,6 +46,7 @@ def main():
     g = Game()
     g.start_choice()
 
+
     currentroom = None
     while True:
         direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east\n").lower()
@@ -66,6 +67,10 @@ def main():
             continue
         else:
             # Put battle here
+            print("Monsters")
+            print(currentroom.monster_list)
+            print("Treassures")
+            print(currentroom.treasure_list)
             pass
 
 if __name__ == "__main__":
