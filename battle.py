@@ -2,7 +2,6 @@ import random
 import header
 import player
 import map
-import game
 
 class Battle:
     def roll_dice(self, roll):
