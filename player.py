@@ -11,18 +11,18 @@ class Player:
 def create_player(name, choice):
     if choice == 1:
         player = Player(name, knight)
-        print(player.name,", you are a Knight\nAttack: " + str( knight.attack) + "\nEndurance: " + str(
+        print(player.name, ", you are a Knight\nAttack: " + str( knight.attack) + "\nEndurance: " + str(
             knight.endurance) + "\nAgility: " + str(
             knight.agility) + "\nInitiative: " + str(
             knight.initiative) + "\nSpecial ability: You block the first hit from a monster" + "\n\n")
     elif choice == 2:
         player = Player(name, mage)
-        print(player.name,", you are a Mage\nAttack: " + str(mage.attack) + "\nEndurance: " + str(mage.endurance) + "\nAgility: " + str(
+        print(player.name, ", you are a Mage\nAttack: " + str(mage.attack) + "\nEndurance: " + str(mage.endurance) + "\nAgility: " + str(
                 mage.agility) + "\nInitiative: " + str(
                 mage.initiative) + "\nSpecial ability:  You have 80% chance to escape" + "\n\n")
     elif choice == 3:
         player = Player(name, thief)
-        print(player.name,", you are a Thief\nAttack: " + str(thief.attack) + "\nEndurance: " + str(
+        print(player.name, ", you are a Thief\nAttack: " + str(thief.attack) + "\nEndurance: " + str(
             thief.endurance) + "\nAgility: " + str(
             thief.agility) + "\nInitiative: " + str(
             thief.initiative) + "\nSpecial ability: You have 25% chance to double your damage" + "\n\n")

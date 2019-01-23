@@ -1,5 +1,6 @@
 import monster
 import treasure
+import random
 
 
 class Room:
@@ -17,6 +18,7 @@ class Room:
         self.treasure_list.append(treasure.gold_jewelry_rarity())
         self.treasure_list.append(treasure.loose_coins_rarity())
         self.treasure_list.append(treasure.small_treasure_chest_rarity())
+        self.exit = False
 
     def getx(self):
         return self.x
@@ -47,8 +49,6 @@ class Map:
         sizex = x
         sizey = y
 
-
-
     def map_choice(self):
         diffpick = input('Choose difficulty!\n[1] Easy\n[2] Medium\n[3] Hard\n')
         if diffpick == '1':
@@ -68,6 +68,13 @@ class Map:
     sw = sizex-1, 0
     se = sizex-1, sizey-1
     '''
+    def exit_map(self, map):
+        door = random.choice(map.mapcord)
+        print(door)
+        print(len(self.mapcord))
+        door.exit = True
+        door.monster_list.clear()
+        door.treasure_list.clear()
 
     # Start room selection
     def start_room(self):
@@ -108,7 +115,6 @@ class Map:
                 return newroom
         return "You search the wall for a door but are unable to find one."
 
-
     def move_west(self):
         for newroom in self.mapcord:
             if newroom.getx() == (self.curx - 1) and newroom.gety() == self.cury:
@@ -126,3 +132,4 @@ class Map:
                 self.curx = (newroom.getx())
                 return newroom
         return "You search the wall for a door but are unable to find one."
+

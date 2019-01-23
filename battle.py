@@ -15,7 +15,6 @@ class Battle:
     def health_check(self, victim, health):
         print(victim.name, "has ", health, " HP")
 
-
     def damage(self, health):
         new_health = health - 1
         return new_health

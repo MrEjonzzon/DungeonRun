@@ -45,7 +45,7 @@ def main():
     ai_map = ai.Map()
     g = Game()
     g.start_choice()
-
+    Map.exit_map(Map)
 
     currentroom = None
     while True:
@@ -65,6 +65,15 @@ def main():
         if currentroom == "You search the wall for a door but are unable to find one.":
             print(currentroom)
             continue
+
+        elif currentroom.exit:
+            bye = input("Would you like to leave the map?\n[Y]es\n[N]o\n").lower()
+            if bye == "y":
+                print("Thank you for playing! BYE BYE")
+                quit()
+            else:
+                continue
+
         else:
             # Put battle here
             print("Monsters")
@@ -72,6 +81,7 @@ def main():
             print("Treassures")
             print(currentroom.treasure_list)
             pass
+
 
 if __name__ == "__main__":
     main()
