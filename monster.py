@@ -1,5 +1,6 @@
 import random
 
+
 class Monster:
     def __init__(self, name, initiative, endurance, attack, agility):
         self.name = name
@@ -9,10 +10,60 @@ class Monster:
         self.agility = agility
 
 
-giant_spider = Monster("Giant Spider", 7, 1, 2, 3)
-skeleton = Monster("Skeleton", 4, 2, 3, 3)
-orc = Monster("Orc", 6, 3, 4, 4)
-troll = Monster("Troll", 2, 4, 7, 2)
+class Giant_Spider:
+    def __init__(self):
+        self.name = "Giant Spider"
+        self.initiative = 7
+        self.endurance = 1
+        self.attack = 2
+        self.agility = 3
+
+
+class Skeleton:
+    def __init__(self):
+        self.name = "Skeleton"
+        self.initiative = 4
+        self.endurance = 2
+        self.attack = 3
+        self.agility = 3
+
+
+class Orc:
+    def __init__(self):
+        self.name = "Orc"
+        self.initiative = 6
+        self.endurance = 3
+        self.attack = 4
+        self.agility = 4
+
+
+class Troll:
+    def __init__(self):
+        self.name = "Troll"
+        self.initiative = 2
+        self.endurance = 4
+        self.attack = 7
+        self.agility = 2
+
+
+def create_giant_spider():
+    giant_spider = Giant_Spider()
+    return giant_spider
+
+
+def create_skeleton():
+    skeleton = Skeleton()
+    return skeleton
+
+
+def create_orc():
+    orc = Orc()
+    return orc
+
+
+def create_troll():
+    troll = Troll()
+    return troll
 
 
 def random_generator():
