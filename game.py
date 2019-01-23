@@ -1,6 +1,8 @@
 import map
 import player
 import ai
+import monster
+import battle
 
 
 class Game:
@@ -19,6 +21,7 @@ class Game:
         name = input("What is your name? ")
         choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
         player.create_player(name, choice)
+
         player_map.map_choice()
         player_map.start_room()
         player_map.moving()
@@ -43,8 +46,11 @@ class Game:
 def main():
     global player_map
     global ai_map
+    global game_battle
     player_map = map.Map()
     ai_map = ai.Map()
+    game_battle = battle.Battle()
+    #Test
     g = Game()
     g.start_choice()
 
