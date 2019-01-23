@@ -45,40 +45,28 @@ def main():
     ai_map = ai.Map()
     g = Game()
     g.start_choice()
+
+    currentroom = None
     while True:
         direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east\n").lower()
         if direction == "w":
             currentroom = Map.move_north()
-            if currentroom == "You search the wall for a door but are unable to find one.":
-                print(currentroom)
-                continue
-            else:
-                pass
 
         elif direction == "s":
             currentroom = Map.move_south()
-            if currentroom == "You search the wall for a door but are unable to find one.":
-                print(currentroom)
-                continue
-            else:
-                pass
 
         elif direction == "a":
             currentroom = Map.move_west()
-            if currentroom == "You search the wall for a door but are unable to find one.":
-                print(currentroom)
-                continue
-            else:
-                pass
 
         elif direction == "d":
             currentroom = Map.move_east()
-            if currentroom == "You search the wall for a door but are unable to find one.":
-                print(currentroom)
-                continue
-            else:
-                pass
 
+        if currentroom == "You search the wall for a door but are unable to find one.":
+            print(currentroom)
+            continue
+        else:
+            # Put battle here
+            pass
 
 if __name__ == "__main__":
     main()
