@@ -2,7 +2,6 @@ import random
 import header
 
 class Battle:
-    header.Battle_design()
     def roll_dice(self, roll):
         result = int(0)
         i = 0
@@ -48,6 +47,7 @@ class Battle:
             print("Attacker missed")
 
     def fight(self, hero, monster):
+        header.Battle_design()
         while True:
             if hero.endurance >= 0 and monster.endurance >= 0:
                 print("You are battling a", monster.name, "! \n[1] Fight \n[2] Escape\n")
