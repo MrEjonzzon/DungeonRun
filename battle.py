@@ -1,6 +1,8 @@
 import random
 import header
 import player
+import map
+import game
 
 class Battle:
     def roll_dice(self, roll):
@@ -20,20 +22,31 @@ class Battle:
         new_health = health - 1
         return new_health
 
+
+    def escape_route(self):
+        battle_map = map.Map()
+        direction = input("In which direction do you wish to escape?\n[W] North \n[A] West \n[S] South \n[D] East\n")
+        if direction == 1:
+            battle_map.move_north(self)
+        elif direction == 2:
+            battle_map.move_west(self)
+        elif direction == 3:
+            battle_map.move_south(self)
+        elif direction == 4:
+            battle_map.move_east(self)
+
     def escape(self, hero):
         if hero.name == "Mage":
-            if player.Mage.ability(player):
+            if player.Mage.ability(self):
                 print("Hero escaped from battle")
-                return True
+                self.escape_route(self)
             else:
                 print("Hero can't escape!")
-                return False
-        elif (agility*10) <= random.randint(1, 100):
+        elif (hero.agility*10) <= random.randint(1, 100):
             print("Hero escaped from battle")
-            return True
+            self.escape_route(self)
         else:
             print("Hero can't escape!")
-            return False
 
     def attack(self, hero, monster, knight_count):
         hero_attack_value = 0

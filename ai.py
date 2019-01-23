@@ -1,5 +1,6 @@
 import monster
 import treasure
+import battle
 
 
 class Room:
@@ -47,39 +48,32 @@ class Map:
         sizex = x
         sizey = y
 
-
-
-    def ai_stuff(self):
-        self.start_room()
-        diffpick = input('Choose difficulty!\n[1] Easy\n[2] Medium\n[3] Hard\n')
-        if diffpick == '1':
+    def map_choice(self):
+        selection = int(input('Choose difficulty!\n[1] Easy\n[2] Medium\n[3] Hard\n'))
+        if selection == 1:
             self.mapsize(4, 4)
-            self.move_easy()
-        elif diffpick == '2':
+            self.walking(selection)
+        elif selection == 2:
             self.mapsize(5, 5)
-            self.move_medium()
-        elif diffpick == '3':
+            self.walking(selection)
+        elif selection == 3:
             self.mapsize(8, 8)
-            self.move_hard()
+            self.walking(selection)
         else:
             print("Invalid selection")
 
-        print()
-
-    # Set corner coodinates
-    '''
-    ne = 0, sizey-1
-    sw = sizex-1, 0
-    se = sizex-1, sizey-1
-    '''
-
-    # Start room selection
     def start_room(self):
         self.curx = 0
         self.cury = 0
 
+    def walking(self, selection):
+        if selection == 1:
+            self.move_easy()
+        elif selection == 2:
+            self.move_medium()
+        elif selection == 3:
+            self.move_hard()
 
-    # Choose direction
     def move_south(self):
         for newroom in self.mapcord:
             if newroom.gety() == (self.cury + 1) and newroom.getx() == self.curx:
@@ -109,7 +103,6 @@ class Map:
                 print(self.cury, self.curx)
                 return newroom
         return "You search the wall for a door but are unable to find one."
-
 
     def move_easy(self):
         # Move right X3
@@ -169,7 +162,6 @@ class Map:
         self.move_east()
         self.move_east()
         self.move_east()
-
 
     def move_hard(self):
         # Move right X7
@@ -250,3 +242,4 @@ class Map:
         self.move_west()
         self.move_west()
         self.move_west()
+

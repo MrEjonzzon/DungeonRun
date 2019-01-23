@@ -25,12 +25,14 @@ class Game:
         Map.map_choice()
         Map.start_room()
         walking(character)
+        Map.exit_map(Map)
+
 
     def choose_ai_class(self):
         name = input("What is the name of the AI? ")
         choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
         player.create_player(name, choice)
-        ai_map.ai_stuff()
+        ai_map.map_choice()
 
     def start_choice(self):
         while True:
@@ -51,7 +53,7 @@ def main():
     ai_map = ai.Map()
     g = Game()
     g.start_choice()
-    Map.exit_map(Map)
+
 
 
 def walking(character):
