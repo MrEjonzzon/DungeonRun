@@ -1,6 +1,8 @@
 import map
 import player
 import ai
+import monster
+import battle
 import header
 
 
@@ -18,16 +20,19 @@ class Game:
     def Choose_class(self):
         name = input("What is your name? ")
         choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
+        global character
         character = player.create_player(name, choice)
         Map.map_choice()
         Map.start_room()
-        walking()
+        walking(character)
+        Map.exit_map(Map)
+
 
     def choose_ai_class(self):
         name = input("What is the name of the AI? ")
         choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
         player.create_player(name, choice)
-        ai_map.ai_stuff()
+        ai_map.map_choice()
 
     def start_choice(self):
         while True:
@@ -48,9 +53,12 @@ def main():
     ai_map = ai.Map()
     g = Game()
     g.start_choice()
-    Map.exit_map(Map)
 
-def walking():
+
+
+def walking(character):
+    global game_battle
+    game_battle = battle.Battle
     currentroom = None
     while True:
         direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east\n").lower()
@@ -81,9 +89,26 @@ def walking():
         else:
             # Put battle here
             print("Monsters")
+
             print(currentroom.monster_list)
-            print("Treassures")
+            print(character.hero.character)
+
+            if currentroom.monster_list[0]:
+                game_battle.fight(game_battle, character.hero, monster.create_giant_spider())
+
+            if currentroom.monster_list[1]:
+                game_battle.fight(game_battle, character.hero, monster.create_skeleton())
+
+            if currentroom.monster_list[2]:
+                game_battle.fight(game_battle, character.hero, monster.create_orc())
+
+            if currentroom.monster_list[3]:
+                game_battle.fight(game_battle, character.hero, monster.create_troll())
+
+            print("Treasures")
+
             print(currentroom.treasure_list)
+
             pass
 
 if __name__ == "__main__":

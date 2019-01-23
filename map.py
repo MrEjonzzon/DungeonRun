@@ -132,4 +132,3 @@ class Map:
                 self.curx = (newroom.getx())
                 return newroom
         return "You search the wall for a door but are unable to find one."
-
