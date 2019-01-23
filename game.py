@@ -20,6 +20,7 @@ class Game:
         character = player.create_player(name, choice)
         Map.map_choice()
         Map.start_room()
+        current_room()
 
     def choose_ai_class(self):
         name = input("What is the name of the AI? ")
@@ -38,15 +39,7 @@ class Game:
                 break
 
 
-def main():
-    global Map
-    global ai_map
-    Map = map.Map()
-    ai_map = ai.Map()
-    g = Game()
-    g.start_choice()
-
-
+def walking():
     currentroom = None
     while True:
         direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east\n").lower()
@@ -72,6 +65,15 @@ def main():
             print("Treassures")
             print(currentroom.treasure_list)
             pass
+
+def main():
+    global Map
+    global ai_map
+    Map = map.Map()
+    ai_map = ai.Map()
+    g = Game()
+    g.start_choice()
+
 
 if __name__ == "__main__":
     main()
