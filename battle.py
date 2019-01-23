@@ -85,21 +85,21 @@ class Battle:
             print("Monster missed")
             return knight_count
 
-    def fight(self, hero, monster):
+    def fight(self, character, monster):
         header.Battle_design()
         print("You are battling a", monster.name)
-        if hero.name == "Knight":
+        if character.hero.name == "Knight":
             knight_count = 0
         else:
             knight_count = 1
         while True:
-            if hero.endurance >= 1 and monster.endurance >= 1:
-                self.health_check(self, hero, monster)
+            if character.hero.endurance >= 1 and monster.endurance >= 1:
+                self.health_check(self, character.hero, monster)
                 choice = int(input("[1] Fight \n[2] Escape\n"))
                 if choice == 1:
-                    self.attack(self, hero, monster, knight_count)
+                    self.attack(self, character.hero, monster, knight_count)
                 elif choice == 2:
-                    self.escape(self, hero)
+                    self.escape(self, character.hero)
                 else:
                     print("Invalid selection, try again")
             else:

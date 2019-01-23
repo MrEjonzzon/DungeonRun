@@ -9,6 +9,7 @@ class Player:
         self.treasures = 0
 
 
+
 def create_player(name, choice):
     if choice == 1:
         knight = Knight()

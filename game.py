@@ -31,8 +31,10 @@ class Game:
     def choose_ai_class(self):
         name = input("What is the name of the AI? ")
         choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
-        player.create_player(name, choice)
-        ai_map.map_choice()
+        global ai
+        ai = player.create_player(name, choice)
+        ai_map.map_choice(ai)
+
 
     def start_choice(self):
         while True:
@@ -53,8 +55,6 @@ def main():
     ai_map = ai.Map()
     g = Game()
     g.start_choice()
-
-
 
 def walking(character):
     global game_battle
@@ -94,16 +94,16 @@ def walking(character):
             print(character.hero.character)
 
             if currentroom.monster_list[0]:
-                game_battle.fight(game_battle, character.hero, monster.create_giant_spider())
+                game_battle.fight(game_battle, character, monster.create_giant_spider())
 
             if currentroom.monster_list[1]:
-                game_battle.fight(game_battle, character.hero, monster.create_skeleton())
+                game_battle.fight(game_battle, character, monster.create_skeleton())
 
             if currentroom.monster_list[2]:
-                game_battle.fight(game_battle, character.hero, monster.create_orc())
+                game_battle.fight(game_battle, character, monster.create_orc())
 
             if currentroom.monster_list[3]:
-                game_battle.fight(game_battle, character.hero, monster.create_troll())
+                game_battle.fight(game_battle, character, monster.create_troll())
 
             print("Treasures")
 
