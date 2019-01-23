@@ -12,9 +12,9 @@ class Battle:
             result = result + dice
         return result
 
-    def health_check(self, attacker, victim):
-        print(victim.name, "has ", victim.endurance, " HP")
-        print(attacker.name, "has ", attacker.endurance, " HP")
+    def health_check(self, hero, monster):
+        print(hero.name, "has ", hero.endurance, " HP")
+        print(monster.name, "has ", monster.endurance, " HP")
 
     def damage(self, health):
         new_health = health - 1
@@ -31,18 +31,18 @@ class Battle:
     def attack(self, hero, monster):
         attack_value = 0
         agility_value = 0
-        attack_value += self.roll_dice(hero.attack)
-        agility_value += self.roll_dice(monster.agility)
+        attack_value += self.roll_dice(self, hero.attack)
+        agility_value += self.roll_dice(self, monster.agility)
         print(attack_value, agility_value)
         if attack_value > agility_value:
-            monster.endurance = self.damage(monster.endurance)
+            monster.endurance = self.damage(self, monster.endurance)
             print("Hero attacked")
-            hero.endurance = self.damage(hero.endurance)
+            hero.endurance = self.damage(self, hero.endurance)
             print("Monster attacked")
         elif agility_value > attack_value:
-            hero.endurance = self.damage(hero.endurance)
+            hero.endurance = self.damage(self, hero.endurance)
             print("Monster attacked")
-            monster.endurance = self.damage(monster.endurance)
+            monster.endurance = self.damage(self, monster.endurance)
             print("Hero attacked")
         else:
             print("Attacker missed")
@@ -50,10 +50,11 @@ class Battle:
     def fight(self, hero, monster):
         while True:
             if hero.endurance >= 0 and monster.endurance >= 0:
-                choice = int(input("You have entered a battle! \n[1] Fight \n[2] Escape\n"))
-                self.health_check(hero, monster)
+                print("You are battling a", monster.name, "! \n[1] Fight \n[2] Escape\n")
+                choice = int(input())
+                self.health_check(self, hero, monster)
                 if choice == 1:
-                    self.attack(hero, monster)
+                    self.attack(self, hero, monster)
                 elif choice == 2:
                     self.escape(self, hero.agility)
                 else:

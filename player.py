@@ -32,8 +32,6 @@ def create_player(name, choice):
             thief.initiative) + "\nSpecial ability: You have 25% chance to double your damage" + "\n\n")
     else:
         print("Invalid Choice")
-    #game_battle = battle.Battle()
-    #game_battle.fight(player.hero, monster.orc)
     return player
 
 class Knight:
