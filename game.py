@@ -14,7 +14,6 @@ class Game:
         else:
             print("Invalid choice")
 
-
     def Choose_class(self):
         name = input("What is your name? ")
         choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
@@ -39,6 +38,7 @@ class Game:
                 self.choose_ai_class()
             else:
                 print("Invalid Selection, try again\n")
+
 
 def main():
     global player_map
