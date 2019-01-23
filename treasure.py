@@ -1,31 +1,17 @@
 import random
-# Treasure:
-# Each room can have one, several or no treasures.
-# Treasures would pick up Automatically when player enters room if there is no monsters in the room.
-# If there is monster in the room the treasure would picked up unless the player get defeated by monsters or escaped from the room.
-# Treasures are randomized in each room based on its usuality as shown in below chart.
-
-#   #   #   #   #   #   #   #   #   #   #   #   #
-# Treasure          	Value(Point)	Rarity  #
-# Loose coins	          2	             40%    #
-# Money pouch	          6	             20%    #
-# Gold jewelry      	 10              15%    #
-# Gemstone	             14              10%    #
-# Small treasure chest	 20	              5%    #
-#   #   #   #   #   #   #   #   #   #   #   #   #
 
 
 class Treasure:
-    def __init__(self, treasure_name, treasure_value):
-        self.treasure_name = treasure_name
-        self.treasure_value = treasure_value
+    def __init__(self, name, value):
+        self.name = name
+        self.value = value
 
 
-loose_coins = Treasure("loose_coins", 2)
-money_pouch = Treasure("money_pouch", 6)
-gold_jewelry = Treasure("gold_jewelry", 10)
-gemstone = Treasure("gemstone", 14)
-small_treasure_chest = Treasure("small_treasure_chest", 20)
+loose_coins = Treasure("Loose Coins", 2)
+money_pouch = Treasure("Money Pouch", 6)
+gold_jewelry = Treasure("Gold Jewelry", 10)
+gemstone = Treasure("Gemstone", 14)
+small_treasure_chest = Treasure("Small Treasure Chest", 20)
 
 
 def random_generator():
@@ -66,4 +52,3 @@ def small_treasure_chest_rarity():
         return True
     else:
         return False
-

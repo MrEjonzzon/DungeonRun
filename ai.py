@@ -1,110 +1,149 @@
-import map
-import creature
+import monster
+import treasure
 
 
-def ai_class(selection):
-    if selection == 1:
-        Hero = creature.Knight
-        print("Ai is a knight\nAttack: " + str(Hero.attack) + "\nEndurance: " + str(
-            Hero.endurance) + "\nAgility: " + str(
-            Hero.agility) + "\nInitiative: " + str(
-            Hero.initiative) + "\nSpecial ability: You block the first hit from a monster" + "\n\n")
-    elif selection == 2:
-        Hero = creature.Mage
-        print("Ai is a mage\nAttack: " + str(Hero.attack) + "\nEndurance: " + str(
-            Hero.endurance) + "\nAgility: " + str(
-            Hero.agility) + "\nInitiative: " + str(
-            Hero.initiative) + "\nSpecial ability:  You have 80% chance to escape" + "\n\n")
-    elif selection == 3:
-        Hero = creature.Theif
-        print("Ai is a theif\nAttack: " + str(Hero.attack) + "\nEndurance: " + str(
-            Hero.endurance) + "\nAgility: " + str(
-            Hero.agility) + "\nInitiative: " + str(
-            Hero.initiative) + "\nSpecial ability: You have 25% chance to double your damage" + "\n\n")
-    else:
-        print("Invalid selection")
+class Room:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.monster_list = []
+        self.treasure_list = []
+        self.monster_list.append(monster.giant_spider_rarity())
+        self.monster_list.append(monster.skeleton_rarity())
+        self.monster_list.append(monster.orc_rarity())
+        self.monster_list.append(monster.troll_rarity())
+        self.treasure_list.append(treasure.gemstone_rarity())
+        self.treasure_list.append(treasure.money_pouch_rarity())
+        self.treasure_list.append(treasure.gold_jewelry_rarity())
+        self.treasure_list.append(treasure.loose_coins_rarity())
+        self.treasure_list.append(treasure.small_treasure_chest_rarity())
 
-def ai_start_room():
-    map.curx = 0
-    map.cury = 0
+    def getx(self):
+        return self.x
+
+    def gety(self):
+        return self.y
 
 
+class Map:
+    # Mapsize creator
+    def __init__(self):
+        self.mapcord = []
+        self.curx = 0
+        self.cury = 0
+        self.prevroom = []
+        self.sizex = 0
+        self.sizey = 0
+        self.prevy = 0
+        self.prevx = 0
 
-def ai_move_right():
-    print(map.cury, map.curx)
-    for room in map.mapcord:
-            map.prevx = map.curx
-            map.prevy = map.cury
-            for newroom in map.mapcord:
-                if newroom.getx() == (map.curx + 1) and newroom.gety() == map.cury:
-                    map.curx = (newroom.getx())
-                    print(map.cury, map.curx)
-def ai_move_left():
-    print(map.cury, map.curx)
-    for room in map.mapcord:
-        map.prevx = map.curx
-        map.prevy = map.cury
-        for newroom in map.mapcord:
-            if newroom.getx() == (map.curx - 1) and newroom.gety() == map.cury:
-                map.curx = (newroom.getx())
-                print(map.cury, map.curx)
+    def mapsize(self, x, y):
+        for r in range(x):
+            for k in range(y):
+                room = Room(r, k)
+                self.mapcord.append(room)
+        global sizex
+        global sizey
+        sizex = x
+        sizey = y
 
+    def ai_stuff(self):
+        self.start_room()
+        diffpick = input('Choose difficulty!\n[1] Easy\n[2] Medium\n[3] Hard\n')
+        if diffpick == '1':
+            self.mapsize(4, 4)
+            self.move_easy()
+        elif diffpick == '2':
+            self.mapsize(5, 5)
+            self.move_medium()
+        elif diffpick == '3':
+            self.mapsize(8, 8)
+            self.move_hard()
+        else:
+            print("Invalid selection")
 
-def ai_move_easy():
-    ai_move_right()
-    map.cury += 1
-    ai_move_left()
-    map.cury += 1
-    ai_move_right()
-    map.cury += 1
-    ai_move_left()
+    # Set corner coodinates
+        ne = 0, sizey-1
+        sw = sizex-1, 0
+        se = sizex-1, sizey-1
 
-def ai_move_medium():
-    ai_move_right()
-    map.cury += 1
-    ai_move_left()
-    map.cury += 1
-    ai_move_right()
-    map.cury += 1
-    ai_move_left()
-    map.cury += 1
-    ai_move_right()
+    # Start room selection
+    def start_room(self):
+        self.curx = 0
+        self.cury = 0
 
-def ai_move_hard():
-    ai_move_right()
-    map.cury += 1
-    ai_move_left()
-    map.cury += 1
-    ai_move_right()
-    map.cury += 1
-    ai_move_left()
-    map.cury += 1
-    ai_move_right()
-    map.cury += 1
-    ai_move_left()
-    map.cury += 1
-    ai_move_right()
-    map.cury += 1
-    ai_move_left()
+    def right(self):
+        prevx = self.curx
+        prevy = self.cury
+        curx = self.curx
+        cury = self.cury
+        for newroom in self.mapcord:
+            if newroom.getx() == (curx + 1) and newroom.gety() == cury:
+                curx = (newroom.getx())
+                break
+        if curx == prevx:
+            print("You search the wall for a door but are unable to find one.")
 
-def ai_map_choice():
-    diffpick = input('Choose difficulty!\n[1] Easy\n[2] Medium\n[3] Hard\n')
-    if diffpick == '1':
-        map.mapsize(4, 4)
-        ai_start_room()
-        ai_move_easy()
-    elif diffpick == '2':
-        map.mapsize(5, 5)
-        ai_start_room()
-        ai_move_medium()
-    elif diffpick == '3':
-        map.mapsize(8, 8)
-        ai_start_room()
-        ai_move_hard()
+    def left(self):
+        prevx = self.curx
+        prevy = self.cury
+        curx = self.curx
+        cury = self.cury
+        for newroom in self.mapcord:
+            if newroom.getx() == (curx - 1) and newroom.gety() == cury:
+                curx = (newroom.getx())
+                break
+        if curx == prevx:
+            print("You search the wall for a door but are unable to find one.")
 
 
+    def down(self):
+        prevx = self.curx
+        prevy = self.cury
+        curx = self.curx
+        cury = self.cury
+        print(cury, curx)
+        for newroom in self.mapcord:
+            if newroom.getx() == (curx + 1) and newroom.gety() == cury:
+                curx = (newroom.getx())
+                break
+        if curx == prevx:
+            print("You search the wall for a door but are unable to find one.")
 
+    def move_easy(self):
+        self.right()
+        self.down()
+        self.left()
+        self.down()
+        self.right()
+        self.down()
+        self.left()
 
+    def move_medium(self):
+        self.right()
+        self.down()
+        self.left()
+        self.down()
+        self.right()
+        self.down()
+        self.left()
+        self.down()
+        self.right()
 
-
+    def move_hard(self):
+        self.right()
+        self.down()
+        self.left()
+        self.down()
+        self.right()
+        self.down()
+        self.left()
+        self.down()
+        self.right()
+        self.down()
+        self.left()
+        self.down()
+        self.right()
+        self.down()
+        self.left()
 

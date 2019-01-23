@@ -1,9 +1,6 @@
 import map
-import creature
+import player
 import ai
-import battle
-
-'''from Save import GameState'''
 
 
 class Game:
@@ -17,37 +14,20 @@ class Game:
         else:
             print("Invalid choice")
 
+
     def Choose_class(self):
-        global choice
+        name = input("What is your name? ")
         choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
-        global Hero
-        if choice == 1:
-            Hero = creature.Knight
-            print("You are a knight\nAttack: " + str(Hero.attack) + "\nEndurance: " + str(Hero.endurance) + "\nAgility: " + str(
-                Hero.agility) + "\nInitiative: " + str(Hero.initiative) + "\nSpecial ability: You block the first hit from a monster" + "\n\n")
-        elif choice == 2:
-            Hero = creature.Mage
-            print("You are a mage\nAttack: " + str(Hero.attack) + "\nEndurance: " + str(Hero.endurance) + "\nAgility: " + str(
-                Hero.agility) + "\nInitiative: " + str(Hero.initiative) + "\nSpecial ability:  You have 80% chance to escape" + "\n\n")
-        elif choice == 3:
-            Hero = creature.Theif
-            print("You are a theif\nAttack: " + str(Hero.attack) + "\nEndurance: " + str(Hero.endurance) + "\nAgility: " + str(
-                Hero.agility) + "\nInitiative: " + str(Hero.initiative) + "\nSpecial ability: You have 25% chance to double your damage" + "\n\n")
-        else:
-            print("Invalid Choice")
+        player.create_player(name, choice)
+        player_map.map_choice()
+        player_map.start_room()
+        player_map.moving()
 
-        mymap.map_choice()
-        mymap.start_room()
-        mymap.moving()
-
-    def call_fight(self, monster_list):
-        battle.fight(monster_list, Hero, choice)
-
-    def ai_game(self):
-        hero_selection = int(input("What class should AI be?\n 1: Knight \n 2: Mage \n 3: Thief \n"))
-        ai.ai_class(hero_selection)
-        ai.ai_map_choice()
-        ai.ai_start_room()
+    def choose_ai_class(self):
+        name = input("What is the name of the AI? ")
+        choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
+        player.create_player(name, choice)
+        ai_map.ai_stuff()
 
     def start_choice(self):
         while True:
@@ -56,16 +36,17 @@ class Game:
                 self.player_info()
 
             elif selection == 2:
-                self.ai_game()
+                self.choose_ai_class()
             else:
                 print("Invalid Selection, try again\n")
 
-
 def main():
-    global mymap
-    mymap = map.Map()
+    global player_map
+    global ai_map
+    player_map = map.Map()
+    ai_map = ai.Map()
     g = Game()
-    Game.start_choice(g)
+    g.start_choice()
 
 
 if __name__ == "__main__":
