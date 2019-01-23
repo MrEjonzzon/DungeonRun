@@ -20,8 +20,8 @@ class Battle:
         new_health = health - 1
         return new_health
 
-    def escape(self, agility, mage):
-        if mage == 2:
+    def escape(self, hero):
+        if hero.name == "Mage":
             if player.Mage.ability(player):
                 print("Hero escaped from battle")
                 return True
@@ -35,7 +35,7 @@ class Battle:
             print("Hero can't escape!")
             return False
 
-    def attack(self, hero, monster, theif, knight_count):
+    def attack(self, hero, monster, knight_count):
         hero_attack_value = 0
         monster_agility_value = 0
         hero_agility_value = 0
@@ -46,9 +46,9 @@ class Battle:
         monster_attack_value += self.roll_dice(self, monster.attack)
 
         if hero_attack_value > monster_agility_value:
-            if theif == 3:
+            if hero.name == "Thief":
                 if player.Thief.ability(player):
-                    print("Hero hit the target, dubble damage")
+                    print("Hero hit the target, double damage")
                     monster.endurance = self.damage(self, monster.endurance)
                     monster.endurance = self.damage(self, monster.endurance)
                 else:
@@ -76,19 +76,18 @@ class Battle:
     def fight(self, hero, monster):
         header.Battle_design()
         print("You are battling a", monster.name)
-        if hero.character == 1:
+        if hero.name == "Knight":
             knight_count = 0
         else:
             knight_count = 1
         while True:
-            if hero.endurance >= 0 and monster.endurance >= 0:
+            if hero.endurance >= 1 and monster.endurance >= 1:
                 self.health_check(self, hero, monster)
-                print("[1] Fight \n[2] Escape\n")
-                choice = int(input())
+                choice = int(input("[1] Fight \n[2] Escape\n"))
                 if choice == 1:
-                    knight_count = self.attack(self, hero, monster, hero.character)
+                    self.attack(self, hero, monster, knight_count)
                 elif choice == 2:
-                    self.escape(self, hero.agility, hero.character)
+                    self.escape(self, hero)
                 else:
                     print("Invalid selection, try again")
             else:

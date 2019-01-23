@@ -11,20 +11,20 @@ class Player:
 
 def create_player(name, choice):
     if choice == 1:
-        knight = Knight(name)
+        knight = Knight()
         player = Player(name, knight)
         print(player.name,", you are a Knight\nAttack: " + str(knight.attack) + "\nEndurance: " + str(
             knight.endurance) + "\nAgility: " + str(
             knight.agility) + "\nInitiative: " + str(
             knight.initiative) + "\nSpecial ability: You block the first hit from a monster" + "\n\n")
     elif choice == 2:
-        mage = Mage(name)
+        mage = Mage()
         player = Player(name, mage)
         print(player.name,", you are a Mage\nAttack: " + str(mage.attack) + "\nEndurance: " + str(mage.endurance) + "\nAgility: " + str(
                 mage.agility) + "\nInitiative: " + str(
                 mage.initiative) + "\nSpecial ability:  You have 80% chance to escape" + "\n\n")
     elif choice == 3:
-        thief = Thief(name)
+        thief = Thief()
         player = Player(name, thief)
         print(player.name,", you are a Thief\nAttack: " + str(thief.attack) + "\nEndurance: " + str(
             thief.endurance) + "\nAgility: " + str(
@@ -35,8 +35,8 @@ def create_player(name, choice):
     return player
 
 class Knight:
-    def __init__(self, name):
-        self.name = name
+    def __init__(self):
+        self.name = "Knight"
         self.character = 1
         self.attack = 6
         self.endurance = 9
@@ -45,8 +45,8 @@ class Knight:
 
 
 class Mage:
-    def __init__(self, name):
-        self.name = name
+    def __init__(self):
+        self.name = "Mage"
         self.character = 2
         self.attack = 9
         self.endurance = 4
@@ -62,8 +62,8 @@ class Mage:
 
 
 class Thief:
-    def __init__(self, name):
-        self.name = name
+    def __init__(self):
+        self.name = "Thief"
         self.character = 3
         self.attack = 5
         self.endurance = 5
