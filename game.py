@@ -89,6 +89,7 @@ def walking(character):
             print("Monsters")
 
             print(currentroom.monster_list)
+            print(character.hero.character)
 
             if currentroom.monster_list[0]:
                 game_battle.fight(game_battle, character.hero, monster.giant_spider)

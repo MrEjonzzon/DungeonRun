@@ -37,6 +37,7 @@ def create_player(name, choice):
 class Knight:
     def __init__(self, name):
         self.name = name
+        self.character = 1
         self.attack = 6
         self.endurance = 9
         self.agility = 4
@@ -46,6 +47,7 @@ class Knight:
 class Mage:
     def __init__(self, name):
         self.name = name
+        self.character = 2
         self.attack = 9
         self.endurance = 4
         self.agility = 5
@@ -62,6 +64,7 @@ class Mage:
 class Thief:
     def __init__(self, name):
         self.name = name
+        self.character = 3
         self.attack = 5
         self.endurance = 5
         self.agility = 7
