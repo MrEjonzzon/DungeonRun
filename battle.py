@@ -1,8 +1,8 @@
 import random
-
+import header
 
 class Battle:
-
+    header.Battle_design()
     def roll_dice(self, roll):
         result = int(0)
         i = 0
@@ -60,5 +60,5 @@ class Battle:
                 else:
                     print("Invalid selection, try again")
             else:
-                print("Battle ended")
+                header.Fight_Winnner()  # print("Battle ended")
                 break

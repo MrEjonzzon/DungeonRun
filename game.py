@@ -3,6 +3,8 @@ import player
 import ai
 import monster
 import battle
+import header
+
 
 class Game:
     def player_info(self):
@@ -42,6 +44,7 @@ class Game:
 
 
 def main():
+    header.Meny_DR()
     global Map
     global ai_map
     Map = map.Map()
