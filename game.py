@@ -94,13 +94,13 @@ def walking(character):
             if currentroom.monster_list[0]:
                 game_battle.fight(game_battle, character.hero, monster.giant_spider)
 
-            elif currentroom.monster_list[1]:
+            if currentroom.monster_list[1]:
                 game_battle.fight(game_battle, character.hero, monster.skeleton)
 
-            elif currentroom.monster_list[2]:
+            if currentroom.monster_list[2]:
                 game_battle.fight(game_battle, character.hero, monster.orc)
 
-            elif currentroom.monster_list[3]:
+            if currentroom.monster_list[3]:
                 game_battle.fight(game_battle, character.hero, monster.troll)
 
             print("Treasures")
