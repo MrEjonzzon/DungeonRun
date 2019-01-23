@@ -34,8 +34,8 @@ class Map:
         self.prevroom = []
         self.sizex = 0
         self.sizey = 0
-        self.prevy = 0
-        self.prevx = 0
+        self.prevy = 1
+        self.prevx = 1
 
     def mapsize(self, x, y):
         for r in range(x):
@@ -89,49 +89,40 @@ class Map:
             print("Invalid selection")
 
     # Choose direction
-    def moving(self):
-        while True:
-            print(self.cury, self.curx)
-            direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east\n").lower()
-            if direction == 'w':
-                for newroom in self.mapcord:
-                    if newroom.gety() == (self.cury - 1) and newroom.getx() == self.curx:
-                        self.curx = self.prevx
-                        self.cury = self.prevy
-                        self.cury = (newroom.gety())
-                        break
-                if self.cury == self.prevy:
-                    print("You search the wall for a door but are unable to find one.")
-                    continue
-            elif direction == 's':
-                for newroom in self.mapcord:
-                    if newroom.gety() == (self.cury + 1) and newroom.getx() == self.curx:
-                        self.curx = self.prevx
-                        self.cury = self.prevy
-                        self.cury = (newroom.gety())
-                        break
-                if self.cury == self.prevy:
-                    print("You search the wall for a door but are unable to find one.")
-                    continue
 
-            elif direction == 'a':
-                for newroom in self.mapcord:
-                    if newroom.getx() == (self.curx - 1) and newroom.gety() == self.cury:
-                        self.curx = (newroom.getx())
-                        break
-                if self.curx == self.prevx:
-                    print("You search the wall for a door but are unable to find one.")
-                    continue
+    def move_north(self):
+        for newroom in self.mapcord:
+            if newroom.gety() == (self.cury - 1) and newroom.getx() == self.curx:
+                self.prevy = self.curx
+                self.prevy = self.cury
+                self.cury = (newroom.gety())
+                return newroom
+        return "You search the wall for a door but are unable to find one."
 
-            elif direction == 'd':
-                for newroom in self.mapcord:
-                    if newroom.getx() == (self.curx + 1) and newroom.gety() == self.cury:
-                        self.curx = (newroom.getx())
-                        break
-                if self.curx == self.prevx:
-                    print("You search the wall for a door but are unable to find one.")
-                    continue
+    def move_south(self):
+        for newroom in self.mapcord:
+            if newroom.gety() == (self.cury + 1) and newroom.getx() == self.curx:
+                self.prevy = self.curx
+                self.prevy = self.cury
+                self.cury = (newroom.gety())
+                return newroom
+        return "You search the wall for a door but are unable to find one."
 
-            else:
-                print("Invalid selection")
-                continue
+
+    def move_west(self):
+        for newroom in self.mapcord:
+            if newroom.getx() == (self.curx - 1) and newroom.gety() == self.cury:
+                self.prevy = self.curx
+                self.prevy = self.cury
+                self.curx = (newroom.getx())
+                return newroom
+        return "You search the wall for a door but are unable to find one."
+
+    def move_east(self):
+        for newroom in self.mapcord:
+            if newroom.getx() == (self.curx + 1) and newroom.gety() == self.cury:
+                self.prevy = self.curx
+                self.prevy = self.cury
+                self.curx = (newroom.getx())
+                return newroom
+        return "You search the wall for a door but are unable to find one."

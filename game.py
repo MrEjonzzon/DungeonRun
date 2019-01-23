@@ -18,9 +18,8 @@ class Game:
         name = input("What is your name? ")
         choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
         player.create_player(name, choice)
-        player_map.map_choice()
-        player_map.start_room()
-        player_map.moving()
+        Map.map_choice()
+        Map.start_room()
 
     def choose_ai_class(self):
         name = input("What is the name of the AI? ")
@@ -33,20 +32,52 @@ class Game:
             selection = int(input("Who is playing? \n[1] Player \n[2] AI\n"))
             if selection == 1:
                 self.player_info()
-
+                break
             elif selection == 2:
                 self.choose_ai_class()
-            else:
-                print("Invalid Selection, try again\n")
+                break
 
 
 def main():
-    global player_map
+    global Map
     global ai_map
-    player_map = map.Map()
+    Map = map.Map()
     ai_map = ai.Map()
     g = Game()
     g.start_choice()
+    while True:
+        direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east\n").lower()
+        if direction == "w":
+            currentroom = Map.move_north()
+            if currentroom == "You search the wall for a door but are unable to find one.":
+                print(currentroom)
+                continue
+            else:
+                pass
+
+        elif direction == "s":
+            currentroom = Map.move_south()
+            if currentroom == "You search the wall for a door but are unable to find one.":
+                print(currentroom)
+                continue
+            else:
+                pass
+
+        elif direction == "a":
+            currentroom = Map.move_west()
+            if currentroom == "You search the wall for a door but are unable to find one.":
+                print(currentroom)
+                continue
+            else:
+                pass
+
+        elif direction == "d":
+            currentroom = Map.move_east()
+            if currentroom == "You search the wall for a door but are unable to find one.":
+                print(currentroom)
+                continue
+            else:
+                pass
 
 
 if __name__ == "__main__":
