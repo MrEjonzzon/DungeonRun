@@ -17,9 +17,10 @@ class Game:
     def Choose_class(self):
         name = input("What is your name? ")
         choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
-        player.create_player(name, choice)
+        character = player.create_player(name, choice)
         Map.map_choice()
         Map.start_room()
+        current_room()
 
     def choose_ai_class(self):
         name = input("What is the name of the AI? ")
@@ -47,6 +48,7 @@ def main():
     g.start_choice()
     Map.exit_map(Map)
 
+def walking():
     currentroom = None
     while True:
         direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east\n").lower()
@@ -81,7 +83,6 @@ def main():
             print("Treassures")
             print(currentroom.treasure_list)
             pass
-
 
 if __name__ == "__main__":
     main()
