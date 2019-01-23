@@ -39,6 +39,11 @@ class Battle:
             print("Hero attacked")
             hero.endurance = self.damage(hero.endurance)
             print("Monster attacked")
+        elif agility_value > attack_value:
+            hero.endurance = self.damage(hero.endurance)
+            print("Monster attacked")
+            monster.endurance = self.damage(monster.endurance)
+            print("Hero attacked")
         else:
             print("Attacker missed")
 

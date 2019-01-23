@@ -17,7 +17,7 @@ class Game:
     def Choose_class(self):
         name = input("What is your name? ")
         choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
-        player.create_player(name, choice)
+        character = player.create_player(name, choice)
         Map.map_choice()
         Map.start_room()
 
