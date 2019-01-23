@@ -20,7 +20,7 @@ class Game:
         character = player.create_player(name, choice)
         Map.map_choice()
         Map.start_room()
-        current_room()
+        walking()
 
     def choose_ai_class(self):
         name = input("What is the name of the AI? ")
