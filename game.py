@@ -11,7 +11,6 @@ class Game:
     def player_info(self):
         option = int(input("Choose a name for new player or choose existing player: \n[1] New player\n[2] Existing Player\n[3] Show Highscore\n[4] Quit"))
         if option == 1:
-            print("pass1")  # Test purpose, Delete later
             self.Choose_class()
         elif option == 2:  # Test purpose, Delete later
             print("pass2")
@@ -66,6 +65,7 @@ def main():
     g = Game()
     g.start_choice()
 
+
 def walking(character):
     global game_battle
     game_battle = battle.Battle
@@ -111,18 +111,30 @@ def walking(character):
                     fight = game_battle.fight(game_battle, character, monster.create_giant_spider())
                     if fight:
                         currentroom.monster_list[0] = map.set_false(currentroom.monster_list[0])
+                    elif fight == None:
+                        header.Bye_bye()
+                        quit()
                 elif currentroom.monster_list[1]:
                     fight = game_battle.fight(game_battle, character, monster.create_skeleton())
                     if fight:
                         currentroom.monster_list[1] = map.set_false(currentroom.monster_list[1])
+                    elif fight == None:
+                        header.Bye_bye()
+                        quit()
                 elif currentroom.monster_list[2]:
                     fight = game_battle.fight(game_battle, character, monster.create_orc())
                     if fight:
                         currentroom.monster_list[2] = map.set_false(currentroom.monster_list[2])
+                    elif fight == None:
+                        header.Bye_bye()
+                        quit()
                 elif currentroom.monster_list[3]:
                     fight = game_battle.fight(game_battle, character, monster.create_troll())
                     if fight:
                         currentroom.monster_list[3] = map.set_false(currentroom.monster_list[3])
+                    elif fight == None:
+                        header.Bye_bye()
+                        quit()
                 else:
                     print("Room has no monsters")
                     fight = False

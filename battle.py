@@ -22,18 +22,6 @@ class Battle:
         new_health = health - 1
         return new_health
 
-    def escape_route(self):
-        battle_map = map.Map()
-        direction = input("In which direction do you wish to escape?\n[W] North \n[A] West \n[S] South \n[D] East\n")
-        if direction == 1:
-            battle_map.move_north(battle_map)
-        elif direction == 2:
-            battle_map.move_west(battle_map)
-        elif direction == 3:
-            battle_map.move_south(battle_map)
-        elif direction == 4:
-            battle_map.move_east(battle_map)
-
     def escape(self, hero):
         if hero.name == "Mage":
             if player.Mage.ability(self):
@@ -126,8 +114,8 @@ class Battle:
 
                 elif character.hero.endurance < 1:
                     print("hero died")
+                    break
                 elif escape:
-                   # self.escape_route(self)
                     return False
                     break
 
