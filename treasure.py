@@ -53,4 +53,3 @@ def small_treasure_chest_rarity():
         return True
     else:
         return False
-
