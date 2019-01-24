@@ -89,7 +89,8 @@ def walking(character):
             bye = input("Would you like to leave the map?\n[Y]es\n[N]o\n").lower()
             if bye == "y":
                 print("Thank you for playing! BYE BYE")
-                return
+                # SAVE HERE
+                main()
             else:
                 continue
 
