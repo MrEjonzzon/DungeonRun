@@ -48,6 +48,10 @@ class Game:
                 self.choose_ai_class()
                 break
 
+    def tot_treasure(self, character, treasure_value):
+        character.treasures += treasure_value.value
+        print("Your bag is filled with new treasure!\nYou treasure is now worth\n", character.treasures)
+
 
 def main():
     header.Meny_DR()
@@ -62,10 +66,7 @@ def walking(character):
     global game_battle
     game_battle = battle.Battle
     currentroom = None
-
-    def tot_treasure(character, treasure_value):
-        character.treasures += treasure_value.value
-        print("Your bag is filled with new treasure!\nYou treasure is now worth\n", character.treasures)
+    g = Game()
 
     while True:
         direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east\n").lower()
@@ -118,19 +119,20 @@ def walking(character):
             print(currentroom.treasure_list)
 
             if currentroom.treasure_list[0]:
-                tot_treasure(character,treasure.loose_coins)
-
+                g.tot_treasure(character,treasure.loose_coins)
+                currentroom.treasure_list[0] = map.set_false(currentroom.treasure_list[0])
             if currentroom.treasure_list[1]:
-                tot_treasure(character, treasure.money_pouch)
-
+                g.tot_treasure(character, treasure.money_pouch)
+                currentroom.treasure_list[1] = map.set_false(currentroom.treasure_list[1])
             if currentroom.treasure_list[2]:
-                tot_treasure(character, treasure.gold_jewelry)
-
+                g.tot_treasure(character, treasure.gold_jewelry)
+                currentroom.treasure_list[2] = map.set_false(currentroom.treasure_list[2])
             if currentroom.treasure_list[3]:
-                tot_treasure(character, treasure.gemstone)
-
+                g.tot_treasure(character, treasure.gemstone)
+                currentroom.treasure_list[3] = map.set_false(currentroom.treasure_list[3])
             if currentroom.treasure_list[4]:
-                tot_treasure(character, treasure.small_treasure_chest)
+                g.tot_treasure(character, treasure.small_treasure_chest)
+                currentroom.treasure_list[4] = map.set_false(currentroom.treasure_list[4])
 
 
 if __name__ == "__main__":

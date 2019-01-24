@@ -105,6 +105,7 @@ class Map:
                 self.prevy = self.curx
                 self.prevy = self.cury
                 self.cury = (newroom.gety())
+                print(self.cury, self.curx)
                 return newroom
         return "You search the wall for a door but are unable to find one."
 
@@ -114,6 +115,7 @@ class Map:
                 self.prevy = self.curx
                 self.prevy = self.cury
                 self.cury = (newroom.gety())
+                print(self.cury, self.curx)
                 return newroom
         return "You search the wall for a door but are unable to find one."
 
@@ -123,6 +125,7 @@ class Map:
                 self.prevy = self.curx
                 self.prevy = self.cury
                 self.curx = (newroom.getx())
+                print(self.cury, self.curx)
                 return newroom
         return "You search the wall for a door but are unable to find one."
 
@@ -132,6 +135,7 @@ class Map:
                 self.prevy = self.curx
                 self.prevy = self.cury
                 self.curx = (newroom.getx())
+                print(self.cury, self.curx)
                 return newroom
         return "You search the wall for a door but are unable to find one."
 

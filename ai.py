@@ -1,6 +1,7 @@
 import monster
 import treasure
 import ai_battle
+import game
 
 class Room:
     def __init__(self, x, y):
@@ -28,6 +29,8 @@ class Room:
 class Map:
     global ai_battle
     ai_battle = ai_battle.Battle()
+    global g
+    g = game.Game()
     # Mapsize creator
     def __init__(self):
         self.mapcord = []
@@ -82,6 +85,7 @@ class Map:
                 self.prevy = self.cury
                 self.cury = (newroom.gety())
 
+                #Battle
                 if newroom.monster_list[0]:
                     ai_battle.fight(character, monster.create_giant_spider())
                 if newroom.monster_list[1]:
@@ -90,6 +94,23 @@ class Map:
                     ai_battle.fight(character, monster.create_orc())
                 if newroom.monster_list[3]:
                     ai_battle.fight(character, monster.create_troll())
+                    
+                #Treasures
+                if newroom.treasure_list[0]:
+                    g.tot_treasure(character, treasure.loose_coins)
+                    newroom.treasure_list[0] = map.set_false(newroom.treasure_list[0])
+                if newroom.treasure_list[1]:
+                    g.tot_treasure(character, treasure.money_pouch)
+                    newroom.treasure_list[1] = map.set_false(newroom.treasure_list[1])
+                if newroom.treasure_list[2]:
+                    g.tot_treasure(character, treasure.gold_jewelry)
+                    newroom.treasure_list[2] = map.set_false(newroom.treasure_list[2])
+                if newroom.treasure_list[3]:
+                    g.tot_treasure(character, treasure.gemstone)
+                    newroom.treasure_list[3] = map.set_false(newroom.treasure_list[3])
+                if newroom.treasure_list[4]:
+                    g.tot_treasure(character, treasure.small_treasure_chest)
+                    newroom.treasure_list[4] = map.set_false(newroom.treasure_list[4])
 
                 print(self.cury, self.curx)
         return "You search the wall for a door but are unable to find one."
@@ -101,6 +122,7 @@ class Map:
                 self.prevy = self.cury
                 self.curx = (newroom.getx())
 
+                #Battle
                 if newroom.monster_list[0]:
                     ai_battle.fight(character, monster.create_giant_spider())
                 if newroom.monster_list[1]:
@@ -109,6 +131,23 @@ class Map:
                     ai_battle.fight(character, monster.create_orc())
                 if newroom.monster_list[3]:
                     ai_battle.fight(character, monster.create_troll())
+
+                    # Treasures
+                    if newroom.treasure_list[0]:
+                        g.tot_treasure(character, treasure.loose_coins)
+                        newroom.treasure_list[0] = map.set_false(newroom.treasure_list[0])
+                    if newroom.treasure_list[1]:
+                        g.tot_treasure(character, treasure.money_pouch)
+                        newroom.treasure_list[1] = map.set_false(newroom.treasure_list[1])
+                    if newroom.treasure_list[2]:
+                        g.tot_treasure(character, treasure.gold_jewelry)
+                        newroom.treasure_list[2] = map.set_false(newroom.treasure_list[2])
+                    if newroom.treasure_list[3]:
+                        g.tot_treasure(character, treasure.gemstone)
+                        newroom.treasure_list[3] = map.set_false(newroom.treasure_list[3])
+                    if newroom.treasure_list[4]:
+                        g.tot_treasure(character, treasure.small_treasure_chest)
+                        newroom.treasure_list[4] = map.set_false(newroom.treasure_list[4])
 
                 print(self.cury, self.curx)
         return "You search the wall for a door but are unable to find one."
@@ -120,6 +159,7 @@ class Map:
                 self.prevy = self.cury
                 self.curx = (newroom.getx())
 
+                #Battle
                 if newroom.monster_list[0]:
                     ai_battle.fight(character, monster.create_giant_spider())
                 if newroom.monster_list[1]:
@@ -128,6 +168,23 @@ class Map:
                     ai_battle.fight(character, monster.create_orc())
                 if newroom.monster_list[3]:
                     ai_battle.fight(character, monster.create_troll())
+
+                    # Treasures
+                    if newroom.treasure_list[0]:
+                        g.tot_treasure(character, treasure.loose_coins)
+                        newroom.treasure_list[0] = map.set_false(newroom.treasure_list[0])
+                    if newroom.treasure_list[1]:
+                        g.tot_treasure(character, treasure.money_pouch)
+                        newroom.treasure_list[1] = map.set_false(newroom.treasure_list[1])
+                    if newroom.treasure_list[2]:
+                        g.tot_treasure(character, treasure.gold_jewelry)
+                        newroom.treasure_list[2] = map.set_false(newroom.treasure_list[2])
+                    if newroom.treasure_list[3]:
+                        g.tot_treasure(character, treasure.gemstone)
+                        newroom.treasure_list[3] = map.set_false(newroom.treasure_list[3])
+                    if newroom.treasure_list[4]:
+                        g.tot_treasure(character, treasure.small_treasure_chest)
+                        newroom.treasure_list[4] = map.set_false(newroom.treasure_list[4])
 
                 print(self.cury, self.curx)
 
