@@ -97,7 +97,7 @@ class Battle:
                 self.health_check(self, character.hero, monster)
                 choice = int(input("[1] Fight \n[2] Escape\n"))
                 if choice == 1:
-                    self.attack(self, character.hero, monster, knight_count)
+                   knight_count = self.attack(self, character.hero, monster, knight_count)
                 elif choice == 2:
                     self.escape(self, character.hero)
                 else:
