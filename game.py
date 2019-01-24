@@ -5,6 +5,7 @@ import monster
 import battle
 import header
 import treasure
+import save
 
 
 class Game:
@@ -90,7 +91,8 @@ def walking(character):
             bye = input("Would you like to leave the map?\n[Y]es\n[N]o\n").lower()
             if bye == "y":
                 print("Thank you for playing! BYE BYE")
-                # SAVE HERE
+                #Put save here
+                save.save_game(character.name, character.hero.name, character.treasures)
                 main()
             else:
                 continue
@@ -133,27 +135,27 @@ def walking(character):
                     fight = False
                     if currentroom.treasure_list[0]:
                         g.tot_treasure(character, treasure.loose_coins)
-                        print("You found some loose coins!\nWorth: 2 points\n")
+                        print("You found some", treasure.loose_coins.name, "!\nWorth: 2 points\n")
                         got_treasure = True
 
                     if currentroom.treasure_list[1]:
                         g.tot_treasure(character, treasure.money_pouch)
-                        print("You found a money pouch!\nWorth: 6 points\n")
+                        print("You found a", treasure.money_pouch.name, "!\nWorth: 6 points\n")
                         got_treasure = True
 
                     if currentroom.treasure_list[2]:
                         g.tot_treasure(character, treasure.gold_jewelry)
-                        print("You found a some golden jewlery!\nWorth: 10 points\n")
+                        print("You found", treasure.gold_jewelry.name, "!\nWorth: 10 points\n")
                         got_treasure = True
 
                     if currentroom.treasure_list[3]:
                         g.tot_treasure(character, treasure.gemstone)
-                        print("You found a gemstone!\nWorth: 14 points\n")
+                        print("You found a", treasure.gemstone.name, "!\nWorth: 14 points\n")
                         got_treasure = True
 
                     if currentroom.treasure_list[4]:
                         g.tot_treasure(character, treasure.small_treasure_chest)
-                        print("You found a small treasure chest!\nWorth: 20 points\n")
+                        print("You found a", treasure.small_treasure_chest.name, "!\nWorth: 20 points\n")
                         got_treasure = True
 
                     if got_treasure:
