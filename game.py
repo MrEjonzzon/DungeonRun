@@ -96,15 +96,16 @@ def walking(character):
 
             if currentroom.monster_list[0]:
                 game_battle.fight(game_battle, character, monster.create_giant_spider())
-
+                currentroom.monster_list[0] = map.set_false(currentroom.monster_list[0])
             if currentroom.monster_list[1]:
                 game_battle.fight(game_battle, character, monster.create_skeleton())
-
+                currentroom.monster_list[1] = map.set_false(currentroom.monster_list[1])
             if currentroom.monster_list[2]:
                 game_battle.fight(game_battle, character, monster.create_orc())
-
+                currentroom.monster_list[2] = map.set_false(currentroom.monster_list[2])
             if currentroom.monster_list[3]:
                 game_battle.fight(game_battle, character, monster.create_troll())
+                currentroom.monster_list[3] = map.set_false(currentroom.monster_list[3])
 
             print("Treasures")
 

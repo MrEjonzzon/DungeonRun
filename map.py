@@ -3,6 +3,10 @@ import treasure
 import random
 
 
+def set_false(object):
+    object = False
+    return object
+
 class Room:
     def __init__(self, x, y):
         self.x = x
@@ -130,3 +134,4 @@ class Map:
                 self.curx = (newroom.getx())
                 return newroom
         return "You search the wall for a door but are unable to find one."
+
