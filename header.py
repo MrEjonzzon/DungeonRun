@@ -218,7 +218,7 @@ def Run_run():
 
 
 
-Meny_DR()
+
 
 
 

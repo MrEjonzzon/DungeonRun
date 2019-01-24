@@ -57,10 +57,13 @@ class Map:
         diffpick = input('Choose difficulty!\n[1] Easy\n[2] Medium\n[3] Hard\n')
         if diffpick == '1':
             self.mapsize(4, 4)
+            print("You created a 4x4 map!\n")
         elif diffpick == '2':
             self.mapsize(5, 5)
+            print("You created a 5x5 map!\n")
         elif diffpick == '3':
             self.mapsize(8, 8)
+            print("You created a 8x8 map!\n")
         else:
             print("Invalid selection")
 

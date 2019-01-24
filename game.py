@@ -9,7 +9,7 @@ import treasure
 
 class Game:
     def player_info(self):
-        option = int(input("Choose a name for new player or choose existing player: \n[1] New player\n[2] Existing Player\n[3] Show Highscore\n[4] Quit"))
+        option = int(input("Choose a name for new player or choose existing player: \n[1] New player\n[2] Existing Player\n[3] Show Highscore\n[4] Quit\n"))
         if option == 1:
             self.Choose_class()
         elif option == 2:  # Test purpose, Delete later
@@ -32,15 +32,12 @@ class Game:
         Map.exit_map(Map)
         walking(character)
 
-
-
     def choose_ai_class(self):
         name = input("What is the name of the AI? ")
         choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
         global ai
         ai = player.create_player(name, choice)
         ai_map.map_choice(ai)
-
 
     def start_choice(self):
         while True:
@@ -54,7 +51,6 @@ class Game:
 
     def tot_treasure(self, character, treasure_value):
         character.treasures += treasure_value.value
-
 
 def main():
     header.Meny_DR()
@@ -86,7 +82,7 @@ def walking(character):
         elif direction == "d":
             currentroom = Map.move_east()
 
-        if currentroom == "You search the wall for a door but are unable to find one.":
+        if currentroom == "You search the wall for a door but are unable to find one\n":
             print(currentroom)
             continue
 
@@ -102,9 +98,6 @@ def walking(character):
         else:
             got_treasure = False
             # Put battle here
-            print("Monsters")
-            print(currentroom.monster_list)
-            print(character.hero.character)
             fight = True
             while fight:
                 if currentroom.monster_list[0]:
@@ -140,27 +133,27 @@ def walking(character):
                     fight = False
                     if currentroom.treasure_list[0]:
                         g.tot_treasure(character, treasure.loose_coins)
-                        print("You found some loose coins!\nWorth: 2\n")
+                        print("You found some loose coins!\nWorth: 2 points\n")
                         got_treasure = True
 
                     if currentroom.treasure_list[1]:
                         g.tot_treasure(character, treasure.money_pouch)
-                        print("You found a money pouch!\nWorth: 6\n")
+                        print("You found a money pouch!\nWorth: 6 points\n")
                         got_treasure = True
 
                     if currentroom.treasure_list[2]:
                         g.tot_treasure(character, treasure.gold_jewelry)
-                        print("You found a some golden jewlery!\nWorth: 10\n")
+                        print("You found a some golden jewlery!\nWorth: 10 points\n")
                         got_treasure = True
 
                     if currentroom.treasure_list[3]:
                         g.tot_treasure(character, treasure.gemstone)
-                        print("You found a gemston!\nWorth: 14\n")
+                        print("You found a gemstone!\nWorth: 14 points\n")
                         got_treasure = True
 
                     if currentroom.treasure_list[4]:
                         g.tot_treasure(character, treasure.small_treasure_chest)
-                        print("You found a small treasure chest!\nWorth: 20\n")
+                        print("You found a small treasure chest!\nWorth: 20 points\n")
                         got_treasure = True
 
                     if got_treasure:
@@ -171,7 +164,6 @@ def walking(character):
                         currentroom.treasure_list[3] = map.set_false(currentroom.treasure_list[3])
                         currentroom.treasure_list[4] = map.set_false(currentroom.treasure_list[4])
 
-
 def main():
     header.Meny_DR()
     global Map
@@ -180,7 +172,6 @@ def main():
     ai_map = ai.Map()
     g = Game()
     g.start_choice()
-
 
 if __name__ == "__main__":
     main()

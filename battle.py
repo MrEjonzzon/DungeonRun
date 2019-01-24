@@ -16,7 +16,7 @@ class Battle:
 
     def health_check(self, hero, monster):
         print(hero.name, "has ", hero.endurance, " HP")
-        print(monster.name, "has ", monster.endurance, " HP")
+        print(monster.name, "has ", monster.endurance, " HP\n")
 
     def damage(self, health):
         new_health = health - 1
