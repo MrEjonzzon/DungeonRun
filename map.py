@@ -3,6 +3,10 @@ import treasure
 import random
 
 
+def set_false(object):
+    object = False
+    return object
+
 class Room:
     def __init__(self, x, y):
         self.x = x
@@ -70,8 +74,6 @@ class Map:
     '''
     def exit_map(self, map):
         door = random.choice(map.mapcord)
-        print(door)
-        print(len(self.mapcord))
         door.exit = True
         door.monster_list.clear()
         door.treasure_list.clear()
@@ -103,6 +105,7 @@ class Map:
                 self.prevy = self.curx
                 self.prevy = self.cury
                 self.cury = (newroom.gety())
+                print(self.cury, self.curx)
                 return newroom
         return "You search the wall for a door but are unable to find one."
 
@@ -112,6 +115,7 @@ class Map:
                 self.prevy = self.curx
                 self.prevy = self.cury
                 self.cury = (newroom.gety())
+                print(self.cury, self.curx)
                 return newroom
         return "You search the wall for a door but are unable to find one."
 
@@ -121,6 +125,7 @@ class Map:
                 self.prevy = self.curx
                 self.prevy = self.cury
                 self.curx = (newroom.getx())
+                print(self.cury, self.curx)
                 return newroom
         return "You search the wall for a door but are unable to find one."
 
@@ -130,5 +135,7 @@ class Map:
                 self.prevy = self.curx
                 self.prevy = self.cury
                 self.curx = (newroom.getx())
+                print(self.cury, self.curx)
                 return newroom
         return "You search the wall for a door but are unable to find one."
+

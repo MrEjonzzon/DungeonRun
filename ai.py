@@ -1,7 +1,7 @@
 import monster
 import treasure
-import battle
-
+import ai_battle
+import game
 
 class Room:
     def __init__(self, x, y):
@@ -27,6 +27,10 @@ class Room:
 
 
 class Map:
+    global ai_battle
+    ai_battle = ai_battle.Battle()
+    global g
+    g = game.Game()
     # Mapsize creator
     def __init__(self):
         self.mapcord = []
@@ -48,17 +52,17 @@ class Map:
         sizex = x
         sizey = y
 
-    def map_choice(self):
+    def map_choice(self, character):
         selection = int(input('Choose difficulty!\n[1] Easy\n[2] Medium\n[3] Hard\n'))
         if selection == 1:
             self.mapsize(4, 4)
-            self.walking(selection)
+            self.moving(selection, character)
         elif selection == 2:
             self.mapsize(5, 5)
-            self.walking(selection)
+            self.moving(selection, character)
         elif selection == 3:
             self.mapsize(8, 8)
-            self.walking(selection)
+            self.moving(selection, character)
         else:
             print("Invalid selection")
 
@@ -66,180 +70,251 @@ class Map:
         self.curx = 0
         self.cury = 0
 
-    def walking(self, selection):
+    def moving(self, selection, character):
         if selection == 1:
-            self.move_easy()
+            self.move_easy(character)
         elif selection == 2:
-            self.move_medium()
+            self.move_medium(character)
         elif selection == 3:
-            self.move_hard()
+            self.move_hard(character)
 
-    def move_south(self):
+    def move_south(self, character):
         for newroom in self.mapcord:
             if newroom.gety() == (self.cury + 1) and newroom.getx() == self.curx:
                 self.prevy = self.curx
                 self.prevy = self.cury
                 self.cury = (newroom.gety())
+
+                #Battle
+                if newroom.monster_list[0]:
+                    ai_battle.fight(character, monster.create_giant_spider())
+                if newroom.monster_list[1]:
+                    ai_battle.fight(character, monster.create_skeleton())
+                if newroom.monster_list[2]:
+                    ai_battle.fight(character, monster.create_orc())
+                if newroom.monster_list[3]:
+                    ai_battle.fight(character, monster.create_troll())
+                    
+                #Treasures
+                if newroom.treasure_list[0]:
+                    g.tot_treasure(character, treasure.loose_coins)
+                if newroom.treasure_list[1]:
+                    g.tot_treasure(character, treasure.money_pouch)
+                if newroom.treasure_list[2]:
+                    g.tot_treasure(character, treasure.gold_jewelry)
+                if newroom.treasure_list[3]:
+                    g.tot_treasure(character, treasure.gemstone)
+                if newroom.treasure_list[4]:
+                    g.tot_treasure(character, treasure.small_treasure_chest)
+
                 print(self.cury, self.curx)
-                return newroom
         return "You search the wall for a door but are unable to find one."
 
-    def move_west(self):
+    def move_west(self, character):
         for newroom in self.mapcord:
             if newroom.getx() == (self.curx - 1) and newroom.gety() == self.cury:
                 self.prevy = self.curx
                 self.prevy = self.cury
                 self.curx = (newroom.getx())
+
+                #Battle
+                if newroom.monster_list[0]:
+                    ai_battle.fight(character, monster.create_giant_spider())
+                if newroom.monster_list[1]:
+                    ai_battle.fight(character, monster.create_skeleton())
+                if newroom.monster_list[2]:
+                    ai_battle.fight(character, monster.create_orc())
+                if newroom.monster_list[3]:
+                    ai_battle.fight(character, monster.create_troll())
+
+                    # Treasures
+                    if newroom.treasure_list[0]:
+                        g.tot_treasure(character, treasure.loose_coins)
+                    if newroom.treasure_list[1]:
+                        g.tot_treasure(character, treasure.money_pouch)
+                    if newroom.treasure_list[2]:
+                        g.tot_treasure(character, treasure.gold_jewelry)
+                    if newroom.treasure_list[3]:
+                        g.tot_treasure(character, treasure.gemstone)
+                    if newroom.treasure_list[4]:
+                        g.tot_treasure(character, treasure.small_treasure_chest)
+
                 print(self.cury, self.curx)
-                return newroom
         return "You search the wall for a door but are unable to find one."
 
-    def move_east(self):
+    def move_east(self, character):
         for newroom in self.mapcord:
             if newroom.getx() == (self.curx + 1) and newroom.gety() == self.cury:
                 self.prevy = self.curx
                 self.prevy = self.cury
                 self.curx = (newroom.getx())
+
+                #Battle
+                if newroom.monster_list[0]:
+                    ai_battle.fight(character, monster.create_giant_spider())
+                if newroom.monster_list[1]:
+                    ai_battle.fight(character, monster.create_skeleton())
+                if newroom.monster_list[2]:
+                    ai_battle.fight(character, monster.create_orc())
+                if newroom.monster_list[3]:
+                    ai_battle.fight(character, monster.create_troll())
+
+                    # Treasures
+                    if newroom.treasure_list[0]:
+                        g.tot_treasure(character, treasure.loose_coins)
+                    if newroom.treasure_list[1]:
+                        g.tot_treasure(character, treasure.money_pouch)
+                    if newroom.treasure_list[2]:
+                        g.tot_treasure(character, treasure.gold_jewelry)
+                    if newroom.treasure_list[3]:
+                        g.tot_treasure(character, treasure.gemstone)
+                    if newroom.treasure_list[4]:
+                        g.tot_treasure(character, treasure.small_treasure_chest)
+
                 print(self.cury, self.curx)
-                return newroom
+
         return "You search the wall for a door but are unable to find one."
 
-    def move_easy(self):
-        # Move right X3
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        # Move down
-        self.move_south()
-        # Move left X3
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        # Move down
-        self.move_south()
-        # Move right X3
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        # Move down X1
-        self.move_south()
-        # Move left X3
-        self.move_west()
-        self.move_west()
-        self.move_west()
 
-    def move_medium(self):
-        # Move right X4
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
+    def move_easy(self, character):
+        # Move right X3
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
         # Move down
-        self.move_south()
-        # Move left X4
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
+        self.move_south(character)
+        # Move left X3
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
         # Move down
-        self.move_south()
-        # Move right X4
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
+        self.move_south(character)
+        # Move right X3
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
         # Move down X1
-        self.move_south()
-        # Move left X4
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        # Move down X1
-        self.move_south()
-        # Move right X4
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
+        self.move_south(character)
+        # Move left X3
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        print("Ai completed dungeon")
 
-    def move_hard(self):
-        # Move right X7
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
+    def move_medium(self, character):
+        # Move right X4
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
         # Move down
-        self.move_south()
-        # Move left X7
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
+        self.move_south(character)
+        # Move left X4
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
         # Move down
-        self.move_south()
+        self.move_south(character)
+        # Move right X4
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        # Move down X1
+        self.move_south(character)
+        # Move left X4
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        # Move down X1
+        self.move_south(character)
+        # Move right X4
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        print("Ai completed dungeon")
+
+    def move_hard(self, character):
         # Move right X7
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        # Move down X1
-        self.move_south()
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        # Move down
+        self.move_south(character)
         # Move left X7
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        # Move down X1
-        self.move_south()
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        # Move down
+        self.move_south(character)
         # Move right X7
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
         # Move down X1
-        self.move_south()
+        self.move_south(character)
         # Move left X7
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
         # Move down X1
-        self.move_south()
+        self.move_south(character)
         # Move right X7
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
-        self.move_east()
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
         # Move down X1
-        self.move_south()
+        self.move_south(character)
         # Move left X7
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
-        self.move_west()
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        # Move down X1
+        self.move_south(character)
+        # Move right X7
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        self.move_east(character)
+        # Move down X1
+        self.move_south(character)
+        # Move left X7
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        self.move_west(character)
+        print("Ai completed dungeon")
 
