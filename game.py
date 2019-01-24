@@ -9,12 +9,17 @@ import treasure
 
 class Game:
     def player_info(self):
-        option = int(input("Choose a name for new player or choose existing player: \n[1] New player \n[2] Existing Player \n"))
+        option = int(input("Choose a name for new player or choose existing player: \n[1] New player\n[2] Existing Player\n[3] Show Highscore\n[4] Quit"))
         if option == 1:
             print("pass1")  # Test purpose, Delete later
             self.Choose_class()
         elif option == 2:  # Test purpose, Delete later
             print("pass2")
+        elif option == 3:
+            pass    # Highscore list
+        elif option == 4:
+            header.Bye_bye()
+            quit()
         else:
             print("Invalid choice")
 
@@ -50,7 +55,6 @@ class Game:
 
     def tot_treasure(self, character, treasure_value):
         character.treasures += treasure_value.value
-        print("Your bag is filled with new treasure!\nYou treasure is now worth\n", character.treasures)
 
 
 def main():
@@ -122,39 +126,38 @@ def walking(character):
                 else:
                     print("Room has no monsters")
                     fight = False
+                    if currentroom.treasure_list[0]:
+                        g.tot_treasure(character, treasure.loose_coins)
+                        print("You found some loose coins!\nWorth: 2\n")
+                        got_treasure = True
 
-            if currentroom.treasure_list[0]:
-                g.tot_treasure(character,treasure.loose_coins)
-                print("You found some loose coins!\nWorth: 2\n")
-                got_treasure = True
+                    if currentroom.treasure_list[1]:
+                        g.tot_treasure(character, treasure.money_pouch)
+                        print("You found a money pouch!\nWorth: 6\n")
+                        got_treasure = True
 
-            if currentroom.treasure_list[1]:
-                g.tot_treasure(character, treasure.money_pouch)
-                print("You found a money pouch!\nWorth: 6\n")
-                got_treasure = True
+                    if currentroom.treasure_list[2]:
+                        g.tot_treasure(character, treasure.gold_jewelry)
+                        print("You found a some golden jewlery!\nWorth: 10\n")
+                        got_treasure = True
 
-            if currentroom.treasure_list[2]:
-                g.tot_treasure(character, treasure.gold_jewelry)
-                print("You found a some golden jewlery!\nWorth: 10\n")
-                got_treasure = True
+                    if currentroom.treasure_list[3]:
+                        g.tot_treasure(character, treasure.gemstone)
+                        print("You found a gemston!\nWorth: 14\n")
+                        got_treasure = True
 
-            if currentroom.treasure_list[3]:
-                g.tot_treasure(character, treasure.gemstone)
-                print("You found a gemston!\nWorth: 14\n")
-                got_treasure = True
+                    if currentroom.treasure_list[4]:
+                        g.tot_treasure(character, treasure.small_treasure_chest)
+                        print("You found a small treasure chest!\nWorth: 20\n")
+                        got_treasure = True
 
-            if currentroom.treasure_list[4]:
-                g.tot_treasure(character, treasure.small_treasure_chest)
-                print("You found a small treasure chest!\nWorth: 20\n")
-                got_treasure = True
-
-            if got_treasure:
-                print("Your bag is filled with new treasure!\nYou treasure is now worth\n", character.treasures)
-                currentroom.treasure_list[0] = map.set_false(currentroom.treasure_list[0])
-                currentroom.treasure_list[1] = map.set_false(currentroom.treasure_list[1])
-                currentroom.treasure_list[2] = map.set_false(currentroom.treasure_list[2])
-                currentroom.treasure_list[3] = map.set_false(currentroom.treasure_list[3])
-                currentroom.treasure_list[4] = map.set_false(currentroom.treasure_list[4])
+                    if got_treasure:
+                        print("Your bag is filled with new treasure!\nYou treasure is now worth\n", character.treasures)
+                        currentroom.treasure_list[0] = map.set_false(currentroom.treasure_list[0])
+                        currentroom.treasure_list[1] = map.set_false(currentroom.treasure_list[1])
+                        currentroom.treasure_list[2] = map.set_false(currentroom.treasure_list[2])
+                        currentroom.treasure_list[3] = map.set_false(currentroom.treasure_list[3])
+                        currentroom.treasure_list[4] = map.set_false(currentroom.treasure_list[4])
 
 
 def main():
