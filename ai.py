@@ -98,19 +98,14 @@ class Map:
                 #Treasures
                 if newroom.treasure_list[0]:
                     g.tot_treasure(character, treasure.loose_coins)
-                    newroom.treasure_list[0] = map.set_false(newroom.treasure_list[0])
                 if newroom.treasure_list[1]:
                     g.tot_treasure(character, treasure.money_pouch)
-                    newroom.treasure_list[1] = map.set_false(newroom.treasure_list[1])
                 if newroom.treasure_list[2]:
                     g.tot_treasure(character, treasure.gold_jewelry)
-                    newroom.treasure_list[2] = map.set_false(newroom.treasure_list[2])
                 if newroom.treasure_list[3]:
                     g.tot_treasure(character, treasure.gemstone)
-                    newroom.treasure_list[3] = map.set_false(newroom.treasure_list[3])
                 if newroom.treasure_list[4]:
                     g.tot_treasure(character, treasure.small_treasure_chest)
-                    newroom.treasure_list[4] = map.set_false(newroom.treasure_list[4])
 
                 print(self.cury, self.curx)
         return "You search the wall for a door but are unable to find one."
@@ -135,19 +130,14 @@ class Map:
                     # Treasures
                     if newroom.treasure_list[0]:
                         g.tot_treasure(character, treasure.loose_coins)
-                        newroom.treasure_list[0] = map.set_false(newroom.treasure_list[0])
                     if newroom.treasure_list[1]:
                         g.tot_treasure(character, treasure.money_pouch)
-                        newroom.treasure_list[1] = map.set_false(newroom.treasure_list[1])
                     if newroom.treasure_list[2]:
                         g.tot_treasure(character, treasure.gold_jewelry)
-                        newroom.treasure_list[2] = map.set_false(newroom.treasure_list[2])
                     if newroom.treasure_list[3]:
                         g.tot_treasure(character, treasure.gemstone)
-                        newroom.treasure_list[3] = map.set_false(newroom.treasure_list[3])
                     if newroom.treasure_list[4]:
                         g.tot_treasure(character, treasure.small_treasure_chest)
-                        newroom.treasure_list[4] = map.set_false(newroom.treasure_list[4])
 
                 print(self.cury, self.curx)
         return "You search the wall for a door but are unable to find one."
@@ -172,19 +162,14 @@ class Map:
                     # Treasures
                     if newroom.treasure_list[0]:
                         g.tot_treasure(character, treasure.loose_coins)
-                        newroom.treasure_list[0] = map.set_false(newroom.treasure_list[0])
                     if newroom.treasure_list[1]:
                         g.tot_treasure(character, treasure.money_pouch)
-                        newroom.treasure_list[1] = map.set_false(newroom.treasure_list[1])
                     if newroom.treasure_list[2]:
                         g.tot_treasure(character, treasure.gold_jewelry)
-                        newroom.treasure_list[2] = map.set_false(newroom.treasure_list[2])
                     if newroom.treasure_list[3]:
                         g.tot_treasure(character, treasure.gemstone)
-                        newroom.treasure_list[3] = map.set_false(newroom.treasure_list[3])
                     if newroom.treasure_list[4]:
                         g.tot_treasure(character, treasure.small_treasure_chest)
-                        newroom.treasure_list[4] = map.set_false(newroom.treasure_list[4])
 
                 print(self.cury, self.curx)
 
