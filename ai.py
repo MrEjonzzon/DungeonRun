@@ -2,6 +2,7 @@ import monster
 import treasure
 import ai_battle
 import game
+import time
 
 class Room:
     def __init__(self, x, y):
@@ -30,6 +31,14 @@ class Map:
     global ai_battle
     ai_battle = ai_battle.Battle()
     global g
+    global spider_count
+    spider_count = 0
+    global skeleton_count
+    skeleton_count = 0
+    global orc_count
+    orc_count = 0
+    global troll_count
+    troll_count = 0
     g = game.Game()
     # Mapsize creator
     def __init__(self):
@@ -79,6 +88,10 @@ class Map:
             self.move_hard(character)
 
     def move_south(self, character):
+        global spider_count
+        global skeleton_count
+        global orc_count
+        global troll_count
         for newroom in self.mapcord:
             if newroom.gety() == (self.cury + 1) and newroom.getx() == self.curx:
                 self.prevy = self.curx
@@ -88,12 +101,16 @@ class Map:
                 #Battle
                 if newroom.monster_list[0]:
                     ai_battle.fight(character, monster.create_giant_spider())
+                    spider_count += 1
                 if newroom.monster_list[1]:
                     ai_battle.fight(character, monster.create_skeleton())
+                    skeleton_count += 1
                 if newroom.monster_list[2]:
                     ai_battle.fight(character, monster.create_orc())
+                    orc_count += 1
                 if newroom.monster_list[3]:
                     ai_battle.fight(character, monster.create_troll())
+                    troll_count += 1
                     
                 #Treasures
                 if newroom.treasure_list[0]:
@@ -111,6 +128,10 @@ class Map:
         return "You search the wall for a door but are unable to find one."
 
     def move_west(self, character):
+        global spider_count
+        global skeleton_count
+        global orc_count
+        global troll_count
         for newroom in self.mapcord:
             if newroom.getx() == (self.curx - 1) and newroom.gety() == self.cury:
                 self.prevy = self.curx
@@ -120,12 +141,16 @@ class Map:
                 #Battle
                 if newroom.monster_list[0]:
                     ai_battle.fight(character, monster.create_giant_spider())
+                    spider_count += 1
                 if newroom.monster_list[1]:
                     ai_battle.fight(character, monster.create_skeleton())
+                    skeleton_count += 1
                 if newroom.monster_list[2]:
                     ai_battle.fight(character, monster.create_orc())
+                    orc_count += 1
                 if newroom.monster_list[3]:
                     ai_battle.fight(character, monster.create_troll())
+                    troll_count += 1
 
                     # Treasures
                     if newroom.treasure_list[0]:
@@ -143,6 +168,10 @@ class Map:
         return "You search the wall for a door but are unable to find one."
 
     def move_east(self, character):
+        global spider_count
+        global skeleton_count
+        global orc_count
+        global troll_count
         for newroom in self.mapcord:
             if newroom.getx() == (self.curx + 1) and newroom.gety() == self.cury:
                 self.prevy = self.curx
@@ -152,12 +181,16 @@ class Map:
                 #Battle
                 if newroom.monster_list[0]:
                     ai_battle.fight(character, monster.create_giant_spider())
+                    spider_count += 1
                 if newroom.monster_list[1]:
                     ai_battle.fight(character, monster.create_skeleton())
+                    skeleton_count += 1
                 if newroom.monster_list[2]:
                     ai_battle.fight(character, monster.create_orc())
+                    orc_count += 1
                 if newroom.monster_list[3]:
                     ai_battle.fight(character, monster.create_troll())
+                    troll_count += 1
 
                     # Treasures
                     if newroom.treasure_list[0]:
@@ -177,6 +210,10 @@ class Map:
 
 
     def move_easy(self, character):
+        global spider_count
+        global skeleton_count
+        global orc_count
+        global troll_count
         # Move right X3
         self.move_east(character)
         self.move_east(character)
@@ -199,9 +236,22 @@ class Map:
         self.move_west(character)
         self.move_west(character)
         self.move_west(character)
-        print("Ai completed dungeon")
+        print(character.name, "has completed the dungeon")
+        print(character.name, "fought", spider_count, "Giant Spiders")
+        print(character.name, "fought", skeleton_count, "Skeletons")
+        print(character.name, "fought", orc_count, "Orcs")
+        print(character.name, "fought", troll_count, "Trolls")
+        print(character.name, "collected treasures worth", character.treasures)
+        time.sleep(5)
+        game.main()
+
 
     def move_medium(self, character):
+        global spider_count
+        global skeleton_count
+        global orc_count
+        global troll_count
+        troll_count = 0
         # Move right X4
         self.move_east(character)
         self.move_east(character)
@@ -235,9 +285,21 @@ class Map:
         self.move_east(character)
         self.move_east(character)
         self.move_east(character)
-        print("Ai completed dungeon")
+        print(character.name, "has completed the dungeon")
+        print(character.name, "fought", spider_count, "Giant Spiders")
+        print(character.name, "fought", skeleton_count, "Skeletons")
+        print(character.name, "fought", orc_count, "Orcs")
+        print(character.name, "fought", troll_count, "Trolls")
+        print(character.name, "collected treasures worth", character.treasures)
+        time.sleep(5)
+        game.main()
 
     def move_hard(self, character):
+        global spider_count
+        global skeleton_count
+        global orc_count
+        global troll_count
+        troll_count = 0
         # Move right X7
         self.move_east(character)
         self.move_east(character)
@@ -316,5 +378,12 @@ class Map:
         self.move_west(character)
         self.move_west(character)
         self.move_west(character)
-        print("Ai completed dungeon")
+        print(character.name, "has completed the dungeon")
+        print(character.name, "fought", spider_count, "Giant Spiders")
+        print(character.name, "fought", skeleton_count, "Skeletons")
+        print(character.name, "fought", orc_count, "Orcs")
+        print(character.name, "fought", troll_count, "Trolls")
+        print(character.name, "collected treasures worth", character.treasures)
+        time.sleep(5)
+        game.main()
 

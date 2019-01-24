@@ -6,7 +6,7 @@ import battle
 import header
 import treasure
 import save
-
+import time
 
 class Game:
     def player_info(self):
@@ -69,6 +69,16 @@ def walking(character):
     currentroom = None
     g = Game()
 
+    #Monster Counters
+    global spider_count
+    spider_count = 0
+    global skeleton_count
+    skeleton_count = 0
+    global orc_count
+    orc_count = 0
+    global troll_count
+    troll_count = 0
+
     while True:
         direction = input("Choose direction\n[W] to go north\n[A] to go west\n[S] to go south\n[D] to go east\n").lower()
         if direction == "w":
@@ -90,9 +100,15 @@ def walking(character):
         elif currentroom.exit:
             bye = input("Would you like to leave the map?\n[Y]es\n[N]o\n").lower()
             if bye == "y":
+                print("You collected treasures worth", character.treasures)
+                print(character.name, "fought", spider_count, "Giant Spiders")
+                print(character.name, "fought", skeleton_count, "Skeletons")
+                print(character.name, "fought", orc_count, "Orcs")
+                print(character.name, "fought", troll_count, "Trolls")
                 print("Thank you for playing! BYE BYE")
                 #Put save here
                 save.save_game(character.name, character.hero.name, character.treasures)
+                time.sleep(5)
                 main()
             else:
                 continue
@@ -104,32 +120,36 @@ def walking(character):
             while fight:
                 if currentroom.monster_list[0]:
                     fight = game_battle.fight(game_battle, character, monster.create_giant_spider())
+                    spider_count += 1
                     if fight:
                         currentroom.monster_list[0] = map.set_false(currentroom.monster_list[0])
                     elif fight == None:
                         header.Bye_bye()
-                        quit()
+                        main()
                 elif currentroom.monster_list[1]:
                     fight = game_battle.fight(game_battle, character, monster.create_skeleton())
+                    skeleton_count += 1
                     if fight:
                         currentroom.monster_list[1] = map.set_false(currentroom.monster_list[1])
                     elif fight == None:
                         header.Bye_bye()
-                        quit()
+                        main()
                 elif currentroom.monster_list[2]:
                     fight = game_battle.fight(game_battle, character, monster.create_orc())
+                    orc_count += 1
                     if fight:
                         currentroom.monster_list[2] = map.set_false(currentroom.monster_list[2])
                     elif fight == None:
                         header.Bye_bye()
-                        quit()
+                        main()
                 elif currentroom.monster_list[3]:
                     fight = game_battle.fight(game_battle, character, monster.create_troll())
+                    troll_count += 1
                     if fight:
                         currentroom.monster_list[3] = map.set_false(currentroom.monster_list[3])
                     elif fight == None:
                         header.Bye_bye()
-                        quit()
+                        main()
                 else:
                     print("Room has no monsters")
                     fight = False
