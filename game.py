@@ -7,6 +7,7 @@ import header
 import treasure
 import save
 import time
+from save import *
 
 class Game:
     def player_info(self):
@@ -26,8 +27,12 @@ class Game:
     def Choose_class(self):
         name = input("What is your name? ")
         choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
+        global game_state_manager
+        game_state_manager = GameStateManager()
+        global game_state
+        game_state = game_state_manager.load(name)
         global character
-        character = player.create_player(name, choice)
+        character = player.create_player(name, choice, game_state)
         Map.map_choice()
         Map.start_room()
         Map.exit_map(Map)
@@ -51,7 +56,8 @@ class Game:
                 break
 
     def tot_treasure(self, character, treasure_value):
-        character.treasures += treasure_value.value
+        character.treasures.append(treasure_value.name)
+
 
 def main():
     header.Meny_DR()
@@ -107,7 +113,8 @@ def walking(character):
                 print(character.name, "fought", troll_count, "Trolls")
                 print("Thank you for playing! BYE BYE")
                 #Put save here
-                save.save_game(character.name, character.hero.name, character.treasures)
+                game_state = GameState(character.name, character.hero.name, character.treasures)
+                game_state_manager.save(game_state)
                 time.sleep(5)
                 main()
             else:
