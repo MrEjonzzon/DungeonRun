@@ -10,7 +10,7 @@ import time
 
 class Game:
     def player_info(self):
-        option = int(input("Choose a name for new player or choose existing player: \n[1] New player\n[2] Existing Player\n[3] Show Highscore\n[4] Quit\n"))
+        option = int(input("[1] Play\n[2] Quit\n"))
         if option == 1:
             self.Choose_class()
         elif option == 2:  # Test purpose, Delete later
