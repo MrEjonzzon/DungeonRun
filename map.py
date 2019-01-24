@@ -70,8 +70,6 @@ class Map:
     '''
     def exit_map(self, map):
         door = random.choice(map.mapcord)
-        print(door)
-        print(len(self.mapcord))
         door.exit = True
         door.monster_list.clear()
         door.treasure_list.clear()

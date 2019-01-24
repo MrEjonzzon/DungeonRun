@@ -24,8 +24,9 @@ class Game:
         character = player.create_player(name, choice)
         Map.map_choice()
         Map.start_room()
-        walking(character)
         Map.exit_map(Map)
+        walking(character)
+        
 
 
     def choose_ai_class(self):
