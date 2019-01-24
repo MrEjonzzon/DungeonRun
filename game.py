@@ -93,7 +93,7 @@ def walking(character):
         elif direction == "d":
             currentroom = Map.move_east()
 
-        if currentroom == "You search the wall for a door but are unable to find one\n":
+        if currentroom == "You search the wall for a door but are unable to find one.":
             print(currentroom)
             continue
 
