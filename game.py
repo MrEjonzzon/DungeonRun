@@ -90,11 +90,12 @@ def walking(character):
             bye = input("Would you like to leave the map?\n[Y]es\n[N]o\n").lower()
             if bye == "y":
                 print("Thank you for playing! BYE BYE")
-                quit()
+                return
             else:
                 continue
 
         else:
+            got_treasure = False
             # Put battle here
             print("Monsters")
             print(currentroom.monster_list)
@@ -121,25 +122,48 @@ def walking(character):
                     print("Room has no monsters")
                     fight = False
 
-            print("Treasures")
-
-            print(currentroom.treasure_list)
-
             if currentroom.treasure_list[0]:
                 g.tot_treasure(character,treasure.loose_coins)
-                currentroom.treasure_list[0] = map.set_false(currentroom.treasure_list[0])
+                print("You found some loose coins!\nWorth: 2\n")
+                got_treasure = True
+
             if currentroom.treasure_list[1]:
                 g.tot_treasure(character, treasure.money_pouch)
-                currentroom.treasure_list[1] = map.set_false(currentroom.treasure_list[1])
+                print("You found a money pouch!\nWorth: 6\n")
+                got_treasure = True
+
             if currentroom.treasure_list[2]:
                 g.tot_treasure(character, treasure.gold_jewelry)
-                currentroom.treasure_list[2] = map.set_false(currentroom.treasure_list[2])
+                print("You found a some golden jewlery!\nWorth: 10\n")
+                got_treasure = True
+
             if currentroom.treasure_list[3]:
                 g.tot_treasure(character, treasure.gemstone)
-                currentroom.treasure_list[3] = map.set_false(currentroom.treasure_list[3])
+                print("You found a gemston!\nWorth: 14\n")
+                got_treasure = True
+
             if currentroom.treasure_list[4]:
                 g.tot_treasure(character, treasure.small_treasure_chest)
+                print("You found a small treasure chest!\nWorth: 20\n")
+                got_treasure = True
+
+            if got_treasure:
+                print("Your bag is filled with new treasure!\nYou treasure is now worth\n", character.treasures)
+                currentroom.treasure_list[0] = map.set_false(currentroom.treasure_list[0])
+                currentroom.treasure_list[1] = map.set_false(currentroom.treasure_list[1])
+                currentroom.treasure_list[2] = map.set_false(currentroom.treasure_list[2])
+                currentroom.treasure_list[3] = map.set_false(currentroom.treasure_list[3])
                 currentroom.treasure_list[4] = map.set_false(currentroom.treasure_list[4])
+
+
+def main():
+    header.Meny_DR()
+    global Map
+    global ai_map
+    Map = map.Map()
+    ai_map = ai.Map()
+    g = Game()
+    g.start_choice()
 
 
 if __name__ == "__main__":
