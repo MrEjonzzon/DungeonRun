@@ -97,22 +97,29 @@ def walking(character):
         else:
             # Put battle here
             print("Monsters")
-
             print(currentroom.monster_list)
             print(character.hero.character)
-
-            if currentroom.monster_list[0]:
-                game_battle.fight(game_battle, character, monster.create_giant_spider())
-                currentroom.monster_list[0] = map.set_false(currentroom.monster_list[0])
-            if currentroom.monster_list[1]:
-                game_battle.fight(game_battle, character, monster.create_skeleton())
-                currentroom.monster_list[1] = map.set_false(currentroom.monster_list[1])
-            if currentroom.monster_list[2]:
-                game_battle.fight(game_battle, character, monster.create_orc())
-                currentroom.monster_list[2] = map.set_false(currentroom.monster_list[2])
-            if currentroom.monster_list[3]:
-                game_battle.fight(game_battle, character, monster.create_troll())
-                currentroom.monster_list[3] = map.set_false(currentroom.monster_list[3])
+            fight = True
+            while fight:
+                if currentroom.monster_list[0]:
+                    fight = game_battle.fight(game_battle, character, monster.create_giant_spider())
+                    if fight:
+                        currentroom.monster_list[0] = map.set_false(currentroom.monster_list[0])
+                elif currentroom.monster_list[1]:
+                    fight = game_battle.fight(game_battle, character, monster.create_skeleton())
+                    if fight:
+                        currentroom.monster_list[1] = map.set_false(currentroom.monster_list[1])
+                elif currentroom.monster_list[2]:
+                    fight = game_battle.fight(game_battle, character, monster.create_orc())
+                    if fight:
+                        currentroom.monster_list[2] = map.set_false(currentroom.monster_list[2])
+                elif currentroom.monster_list[3]:
+                    fight = game_battle.fight(game_battle, character, monster.create_troll())
+                    if fight:
+                        currentroom.monster_list[3] = map.set_false(currentroom.monster_list[3])
+                else:
+                    print("Room has no monsters")
+                    fight = False
 
             print("Treasures")
 
