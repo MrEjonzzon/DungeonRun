@@ -50,7 +50,6 @@ class Game:
 
     def tot_treasure(self, character, treasure_value):
         character.treasures += treasure_value.value
-        print("Your bag is filled with new treasure!\nYou treasure is now worth\n", character.treasures)
 
 
 def main():
@@ -113,41 +112,37 @@ def walking(character):
 
             if currentroom.treasure_list[0]:
                 g.tot_treasure(character,treasure.loose_coins)
-                currentroom.treasure_list[0] = map.set_false(currentroom.treasure_list[0])
-                tot_treasure(character,treasure.loose_coins)
                 print("You found some loose coins!\nWorth: 2\n")
                 got_treasure = True
 
             if currentroom.treasure_list[1]:
                 g.tot_treasure(character, treasure.money_pouch)
-                currentroom.treasure_list[1] = map.set_false(currentroom.treasure_list[1])
-                tot_treasure(character, treasure.money_pouch)
                 print("You found a money pouch!\nWorth: 6\n")
                 got_treasure = True
 
             if currentroom.treasure_list[2]:
                 g.tot_treasure(character, treasure.gold_jewelry)
-                currentroom.treasure_list[2] = map.set_false(currentroom.treasure_list[2])
-                tot_treasure(character, treasure.gold_jewelry)
                 print("You found a some golden jewlery!\nWorth: 10\n")
                 got_treasure = True
 
             if currentroom.treasure_list[3]:
                 g.tot_treasure(character, treasure.gemstone)
-                currentroom.treasure_list[3] = map.set_false(currentroom.treasure_list[3])
-                tot_treasure(character, treasure.gemstone)
                 print("You found a gemston!\nWorth: 14\n")
                 got_treasure = True
 
             if currentroom.treasure_list[4]:
                 g.tot_treasure(character, treasure.small_treasure_chest)
-                currentroom.treasure_list[4] = map.set_false(currentroom.treasure_list[4])
-                tot_treasure(character, treasure.small_treasure_chest)
                 print("You found a small treasure chest!\nWorth: 20\n")
                 got_treasure = True
 
             if got_treasure:
                 print("Your bag is filled with new treasure!\nYou treasure is now worth\n", character.treasures)
+                currentroom.treasure_list[0] = map.set_false(currentroom.treasure_list[0])
+                currentroom.treasure_list[1] = map.set_false(currentroom.treasure_list[1])
+                currentroom.treasure_list[2] = map.set_false(currentroom.treasure_list[2])
+                currentroom.treasure_list[3] = map.set_false(currentroom.treasure_list[3])
+                currentroom.treasure_list[4] = map.set_false(currentroom.treasure_list[4])
+
 
 def main():
     header.Meny_DR()
