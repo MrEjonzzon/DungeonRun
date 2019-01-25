@@ -11,13 +11,19 @@ from save import *
 
 class Game:
     def player_info(self):
-        option = int(input("[1] Play\n[2] Quit\n"))
+        s = save.GameStateManager()
+        option = int(input("[1] New Game\n[2] Load Game\n[3] View Saved Players\n[4] Quit\n"))
         if option == 1:
             self.Choose_class()
-        elif option == 2:  # Test purpose, Delete later
-            print("pass2")
+        elif option == 2:
+            name = input("What is the name of your character? ")
+            old_game_state = GameStateManager()
+            old_player = old_game_state.load(name)
+            walking(old_player)
         elif option == 3:
-            pass    # Highscore list
+            s.high_score_list()
+            time.sleep(5)
+            main()
         elif option == 4:
             header.Bye_bye()
             quit()
@@ -42,7 +48,7 @@ class Game:
         name = input("What is the name of the AI? ")
         choice = int(input("Choose a hero \n 1: Knight \n 2: Mage \n 3: Thief \n"))
         global ai
-        ai = player.create_player(name, choice)
+        ai = player.create_player(name, choice, 0)
         ai_map.map_choice(ai)
 
     def start_choice(self):
@@ -55,8 +61,8 @@ class Game:
                 self.choose_ai_class()
                 break
 
-    def tot_treasure(self, character, treasure_value):
-        character.treasures.append(treasure_value.name)
+    def tot_treasure(self, character, treasure):
+        character.treasures += treasure.value
 
 
 def main():

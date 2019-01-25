@@ -10,7 +10,7 @@ class Player:
         if previous_state:
             self.treasures = previous_state.list_of_treasures
         else:
-            self.treasures = list()
+            self.treasures = 0
 
 
 

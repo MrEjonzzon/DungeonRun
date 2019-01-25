@@ -19,6 +19,16 @@ class GameState:
 
 
 class GameStateManager:
+
+    def high_score_list(self):
+        try:
+            with open('game_states.json') as game_states_json:
+                data = json.load(game_states_json)
+                print(data)
+        except Exception as e:
+            print("No players exist, cannot show scores")
+
+
     def load_all(self):
         try:
             with open('game_states.json') as game_states_json:
@@ -61,4 +71,4 @@ class GameStateManager:
                 data = json.dumps(game_state_data, indent = 4, ensure_ascii=False)
                 game_states_json_file.write(data)
         except Exception as e:
-            print("The player you chose is exist, Enter the new name to continue or go one step back and choose within existing player: \n")
+            print("The player you chose already exists\nEnter the new name to continue or go one step back and choose within existing player: \n")
